@@ -26,66 +26,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: false
+          bundler-cache: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-
-      - name: Install system deps (sqlite, pkg-config)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y curl sqlite3 libsqlite3-dev pkg-config
-
-      - name: Update lockfile for sqlite3
-        run: |
-          bundle lock --update sqlite3
-
-      - name: Install gems (update sqlite3)
-        run: |
-          bundle config set deployment false
-          bundle config set frozen false
-          bundle update sqlite3
-          bundle install --jobs 4 --retry 3
-
-      - name: Configure database for static generation (SQLite, single DB)
-        run: |
-          cat > config/database.yml << 'EOF'
-          default: &default
-            adapter: sqlite3
-            pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-            timeout: 5000
-
-          development:
-            <<: *default
-            database: db/development.sqlite3
-
-          test:
-            <<: *default
-            database: db/test.sqlite3
-
-          production: &production
-            <<: *default
-            database: db/production.sqlite3
-
-          queue:
-            <<: *production
-
-          cache:
-            <<: *production
-
-          cable:
-            <<: *production
-          EOF
-
-      - name: Setup database
-        env:
-          RAILS_ENV: production
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'dummy_secret_key_base_for_build_' }}
-        run: |
-          RAILS_ENV=production bundle exec rails db:create || true
-          RAILS_ENV=production bundle exec rails db:migrate || true
 
       - name: Precompile assets
         env:
