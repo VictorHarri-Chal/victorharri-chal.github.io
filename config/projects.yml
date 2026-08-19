@@ -1,0 +1,260 @@
+# Single source of truth for the projects section.
+#
+# `featured` projects get a card on /projects and their own detail page at
+# /projects/<slug>. `minor` projects only appear as a card in the grid below.
+# The CI build reads the slugs from here to know which pages to generate.
+#
+# accent  : card colour, mapped to Tailwind classes in ProjectsHelper::ACCENTS
+# size    : `large` gets the full-height card, `small` the stacked ones
+# teaser  : short copy shown on the card
+# summary : longer copy shown at the top of the detail page
+# link    : url + label + icon (full Font Awesome classes, e.g. "fa-solid fa-link"
+#           for a live site rather than a source repository)
+
+featured:
+  - slug: vigie
+    name: Vigie
+    period: March 2026
+    datetime: "2026-03-01"
+    accent: amber
+    size: large
+    teaser: >-
+      Vigie gives municipal teams a real-time view of their entire waste collection network.
+      Spot which collection points need emptying on a color-coded map, plan optimized tours
+      with road-accurate routing, manage incidents, and track fleet performance through
+      dedicated dashboards — all in one place.
+    summary: >-
+      Vigie gives municipal teams a real-time view of their entire waste collection network.
+      Spot which collection points need emptying on a color-coded map, plan optimized tours
+      with road-accurate routing, manage incidents, and track fleet performance through
+      dedicated dashboards — all in one place.
+    link:
+      url: https://github.com/VictorHarri-Chal/Vigie
+      label: View source code
+      icon: fa-brands fa-github
+    technologies:
+      - { name: Ruby on Rails 8, color: red }
+      - { name: PostgreSQL / jsonb, color: blue }
+      - { name: Tailwind CSS, color: indigo }
+      - { name: Hotwire (Turbo + Stimulus), color: cyan }
+      - { name: Leaflet.js + OpenStreetMap, color: green }
+      - { name: Chart.js, color: orange }
+      - { name: Devise / Simple Form / Pagy, color: purple }
+      - { name: OSRM routing, color: yellow }
+      - { name: Render, color: emerald }
+    features:
+      - Interactive map with color-coded fill levels, waste type filters, search by name or ID, and a PAV detail panel in Turbo Frame
+      - PAV panel with 4 tabs (timeline, sensors, deposits, incidents) and a 30-day Chart.js fill evolution graph
+      - Incident management with status filters, resolve/reopen actions, Turbo Stream note editing, and CSV export
+      - "5 Chart.js dashboards: fill evolution, breakdown by waste type, monthly incidents, top active and most problematic PAVs"
+      - Tour planning with threshold slider, OSRM routing on real roads, animated polyline, and ordered PAV list with total distance
+
+  - slug: nutri-flow
+    name: NutriFlow
+    period: July 2025
+    datetime: "2025-07-01"
+    accent: purple
+    size: small
+    teaser: >-
+      Fitness and nutrition tracking for athletes. Customizable food database, daily meal
+      planning with macro tracking, recipe management, shopping lists, and workout
+      performance tracking.
+    summary: >-
+      Comprehensive fitness and nutrition tracking application designed for athletes and
+      health-conscious individuals. Features include customizable food database, daily meal
+      planning with macro tracking, personalized calorie calculations, recipe management,
+      interactive shopping lists, and workout performance tracking.
+    link:
+      url: https://github.com/VictorHarri-Chal/NutriFlow
+      label: View source code
+      icon: fa-brands fa-github
+    technologies:
+      - { name: Ruby on Rails, color: red }
+      - { name: Hotwire, color: blue }
+      - { name: PostgreSQL, color: green }
+      - { name: JavaScript, color: orange }
+      - { name: Tailwind CSS, color: indigo }
+    features:
+      - Customizable food database where users can add their most consumed foods with macros and calories
+      - Daily calendar for meal tracking throughout the day with meal management and total calorie, protein, lipid tracking
+      - Daily calorie needs calculation based on individual goals influencing daily requirements
+      - Recipe management system with all necessary ingredients, macros, and nutritional information
+      - Interactive shopping list directly linked to food database and recipes for easy ingredient addition
+      - Workout tracking for strength training to monitor performance and easily modify programs
+      - Responsive interface with real-time updates using Hotwire
+      - Personalized nutrition and fitness recommendations
+
+  - slug: nestio-bnb
+    name: NestioBnb
+    period: April 2025
+    datetime: "2025-04-01"
+    accent: cyan
+    size: small
+    teaser: >-
+      Accommodation rental platform with interactive map, a smooth booking system, and an AI
+      chatbot for personalized recommendations.
+    summary: >-
+      Airbnb-inspired accommodation rental application with interactive Mapbox map, complete
+      booking system, favorites management and AI chatbot for recommendations.
+    link:
+      url: https://github.com/VictorHarri-Chal/NestioBnb
+      label: View source code
+      icon: fa-brands fa-github
+    technologies:
+      - { name: Ruby on Rails, color: red }
+      - { name: Hotwire, color: blue }
+      - { name: PostgreSQL, color: green }
+      - { name: AWS S3, color: yellow }
+      - { name: Mapbox, color: purple }
+      - { name: OpenAI API, color: cyan }
+      - { name: JavaScript, color: orange }
+      - { name: Tailwind CSS, color: indigo }
+    features:
+      - Interactive Mapbox map with real-time filters
+      - Complete accommodation booking system
+      - Favorites management and received requests
+      - AI chatbot for accommodation and place recommendations
+      - Image management with AWS S3
+      - Responsive interface with Hotwire
+      - Advanced search and filtering system
+      - User and owner profile management
+
+  - slug: scandela
+    name: Scandela
+    period: Sept 2023 – June 2025
+    datetime: "2025-06-01"
+    accent: emerald
+    size: small
+    teaser: >-
+      Master's thesis: cartographic analysis platform for public lighting optimization. Helps
+      local authorities reduce electrical costs while ensuring safety.
+    summary: >-
+      Master's thesis project: cartographic analysis and simulation software for public
+      lighting optimization. Interactive map platform helping local authorities reduce
+      electrical and environmental costs while ensuring safety through advanced filtering and
+      analysis tools.
+    link:
+      url: https://github.com/Team-Scandela/Scandela
+      label: View source code
+      icon: fa-brands fa-github
+    technologies:
+      - { name: React, color: blue }
+      - { name: Java Spring Boot, color: green }
+      - { name: Typescript, color: yellow }
+      - { name: Docker, color: blue-dark }
+      - { name: Raspberry Pi, color: red }
+      - { name: PostgreSQL, color: purple }
+      - { name: Mapbox, color: indigo }
+    features:
+      - Interactive cartographic platform for public lighting analysis
+      - Complete streetlight mapping of Nantes city with detailed information
+      - Advanced filtering system for optimization analysis
+      - Cost optimization tools for electrical and environmental expenses
+      - Safety assessment and lighting quality analysis
+      - Complete solution with showcase website, application, and client server
+      - Raspberry Pi integration for hardware components
+      - Real-time data visualization and simulation capabilities
+
+minor:
+  - name: Area
+    year: "2023"
+    url: https://github.com/VictorHarri-Chal/AREA
+    description: >-
+      A comprehensive automation platform similar to IFTTT and Zapier, divided into 3 main
+      parts: an Android mobile application, a web application, and a server. Built with
+      Node.js Express and MongoDB for the backend, React for the web frontend, and React
+      Native for mobile development.
+
+  - name: R-Type
+    year: "2023"
+    url: https://github.com/VictorHarri-Chal/R-Type
+    description: >-
+      A recreation of the famous R-Type arcade game built with SFML and C++. Features include
+      multiplayer cooperative mode for 2-4 players, two difficulty levels (Easy and Hard), and
+      a wave editor for customizing monster spawning. Built with an Entity-Component-System
+      architecture for scalable game object management.
+
+  - name: Arcade
+    year: "2022"
+    url: https://github.com/VictorHarri-Chal/Arcade
+    description: >-
+      A C++ project recreating an arcade machine with multiple games (Pacman & Nibbler) and
+      multiple graphical libraries (Ncurses, SFML, SDL2). The challenge was building a program
+      that allows players to swap between games and graphical libraries at runtime, changing
+      how the games look.
+
+  - name: Teams
+    year: "2022"
+    url: https://github.com/VictorHarri-Chal/Teams
+    description: >-
+      A C-based network project reproducing Microsoft Teams functionality. Features include
+      user communication, team/channel/thread creation, subscription to team events, and
+      multi-client handling. Built to learn socket programming and communication protocol
+      implementation.
+
+  - name: The Plazza
+    year: "2022"
+    url: https://github.com/VictorHarri-Chal/The-Plazza
+    description: >-
+      A C++ pizzeria simulation using multi-processing, multi-threading, and IPC
+      (inter-process communication). Simulates how a pizzeria works with simultaneous order
+      handling, multiple kitchens created gradually, and cooks with varying availability.
+
+  - name: Boomberman
+    year: "2022"
+    url: https://github.com/VictorHarri-Chal/Boomberman
+    description: >-
+      A graphical project built with Raylib, a 3D library, to recreate the famous Bomberman
+      game. This was the final project of my 2nd year at Epitech, featuring strategic bomb
+      placement mechanics and dynamic level design.
+
+  - name: Pokemon RPG
+    year: "2021"
+    url: https://github.com/VictorHarri-Chal/Pokemon-RPG
+    description: >-
+      A C-based role-playing game built with CSFML library to recreate a Pokemon game.
+      Features include a large map, dialogues, combat system, and a final boss. This project
+      taught graphical programming, CSFML usage, and team collaboration with 3 teammates.
+
+  - name: Need4Stek
+    year: "2021"
+    url: https://github.com/VictorHarri-Chal/Need4Stek
+    description: >-
+      An artificial intelligence project coded in C that guides an autonomous car through a
+      virtual racetrack. Features a simulation between CoppeliaSim software and a C program,
+      demonstrating autonomous vehicle navigation and AI decision-making.
+
+  - name: ASM-C-lib
+    year: "2021"
+    url: https://github.com/VictorHarri-Chal/ASM-C-lib
+    description: >-
+      An assembly project designed to discover and understand assembly language. The goal was
+      to recode common functions from the C library in assembly and compile them into a
+      dynamic shared library that can be used by anyone.
+
+  - name: Sokoban
+    year: "2021"
+    url: https://github.com/VictorHarri-Chal/Sokoban
+    description: >-
+      A reproduction of the Japanese Sokoban puzzle game built with the ncurses library in C.
+      Players move boxes to storage locations while avoiding walls and dead ends. The puzzle
+      is solved when all boxes reach their destinations, featuring strategic movement and
+      spatial reasoning.
+
+  - name: Matchsticks
+    year: "2021"
+    url: https://github.com/VictorHarri-Chal/Matchsticks
+    description: >-
+      A C-based implementation of the famous matchsticks game where players take turns
+      removing matchsticks from lines. The player who takes the last matchstick loses.
+      Features an AI opponent that plays randomly, demonstrating basic game logic and
+      turn-based mechanics.
+
+  - name: Popeye
+    year: "2021"
+    url: https://github.com/VictorHarri-Chal/Popeye
+    description: >-
+      A containerized web poll application similar to Strawpoll, built to learn Docker.
+      Features a microservices architecture with Flask (Python), Redis queue, Java worker,
+      PostgreSQL database, and Node.js result display. Demonstrates containerization and
+      microservices deployment.

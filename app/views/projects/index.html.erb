@@ -1,152 +1,26 @@
+<% large, small = @featured.partition(&:large?) %>
+
 <section class="w-full">
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-      <!-- Vigie — grosse card à gauche -->
-      <article class="lg:col-span-1">
-        <div class="project-card project-card--large relative rounded-2xl bg-neutral-900/40 border border-amber-500/50 shadow-[0_0_30px_rgba(245,158,11,0.3)] hover:shadow-[0_0_40px_rgba(245,158,11,0.5)] p-12 hover:scale-[1.02] transition-all duration-300 overflow-hidden group cursor-pointer h-full min-h-[600px]"
-             data-controller="gradient reveal project-card"
-             data-project-card-project-slug-value="vigie"
-             data-action="click->project-card#click"
-             role="button"
-             tabindex="0"
-             aria-label="View Vigie project">
+      <% large.each do |project| %>
+        <article class="lg:col-span-1">
+          <%= render "featured_card", project: project %>
+        </article>
+      <% end %>
 
-          <div class="project-gradient project-gradient--dynamic absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-          <div class="project-gradient project-gradient--static absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-
-          <div class="relative z-10 h-full flex flex-col">
-            <header class="flex justify-between items-start mb-6">
-              <time class="text-sm text-neutral-400 font-medium" datetime="2026-03-01">March 2026</time>
-              <a href="https://github.com/VictorHarri-Chal/Vigie"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="text-neutral-400 hover:text-white transition-colors duration-300"
-                 aria-label="View source code on GitHub">
-                <i class="fa-brands fa-github fa-xl" aria-hidden="true"></i>
-              </a>
-            </header>
-
-            <h2 class="text-4xl font-semibold mb-6 text-white">Vigie</h2>
-
-            <div class="space-y-4 text-neutral-300 leading-relaxed flex-grow">
-              <p class="text-lg">Vigie gives municipal teams a real-time view of their entire waste collection network. Spot which collection points need emptying on a color-coded map, plan optimized tours with road-accurate routing, manage incidents, and track fleet performance through dedicated dashboards — all in one place.</p>
-            </div>
-
-            <div class="mt-6">
-              <%= link_to project_path('vigie'), class: "inline-flex items-center gap-2 text-white hover:text-neutral-300 transition-colors duration-300 font-medium" do %>
-                Read more
-                <i class="fa-solid fa-arrow-right text-sm"></i>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Trois petites cards à droite -->
       <div class="lg:col-span-1 flex flex-col gap-8 h-full">
-
-        <!-- NutriFlow -->
-        <article class="flex-1 min-h-0">
-          <div class="project-card project-card--small relative rounded-2xl bg-neutral-900/40 border border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.3)] hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] p-8 hover:scale-[1.02] transition-all duration-300 overflow-hidden group cursor-pointer h-full flex flex-col"
-               data-controller="gradient reveal project-card"
-               data-project-card-project-slug-value="nutri-flow"
-               data-action="click->project-card#click"
-               role="button"
-               tabindex="0"
-               aria-label="View NutriFlow project">
-
-            <div class="project-gradient project-gradient--dynamic absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-            <div class="project-gradient project-gradient--static absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-
-            <div class="relative z-10 flex flex-col h-full">
-              <header class="flex justify-between items-start mb-4">
-                <time class="text-sm text-neutral-400 font-medium" datetime="2025-07-01">July 2025</time>
-                <a href="https://github.com/VictorHarri-Chal/NutriFlow"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="text-neutral-400 hover:text-white transition-colors duration-300"
-                   aria-label="View source code on GitHub">
-                  <i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-                </a>
-              </header>
-              <h2 class="text-2xl font-semibold mb-3 text-white">NutriFlow</h2>
-              <div class="text-neutral-300 leading-relaxed flex-grow">
-                <p class="text-sm">Fitness and nutrition tracking for athletes. Customizable food database, daily meal planning with macro tracking, recipe management, shopping lists, and workout performance tracking.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- NestioBnb -->
-        <article class="flex-1 min-h-0">
-          <div class="project-card project-card--small relative rounded-2xl bg-neutral-900/40 border border-cyan-500/50 shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] p-8 hover:scale-[1.02] transition-all duration-300 overflow-hidden group cursor-pointer h-full flex flex-col"
-               data-controller="gradient reveal project-card"
-               data-project-card-project-slug-value="nestio-bnb"
-               data-action="click->project-card#click"
-               role="button"
-               tabindex="0"
-               aria-label="View NestioBnb project">
-
-            <div class="project-gradient project-gradient--dynamic absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-            <div class="project-gradient project-gradient--static absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-
-            <div class="relative z-10 flex flex-col h-full">
-              <header class="flex justify-between items-start mb-4">
-                <time class="text-sm text-neutral-400 font-medium" datetime="2025-04-01">April 2025</time>
-                <a href="https://github.com/VictorHarri-Chal/NestioBnb"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="text-neutral-400 hover:text-white transition-colors duration-300"
-                   aria-label="View source code on GitHub">
-                  <i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-                </a>
-              </header>
-              <h2 class="text-2xl font-semibold mb-3 text-white">NestioBnb</h2>
-              <div class="text-neutral-300 leading-relaxed flex-grow">
-                <p class="text-sm">Accommodation rental platform with interactive map, a smooth booking system, and an AI chatbot for personalized recommendations.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Scandela -->
-        <article class="flex-1 min-h-0">
-          <div class="project-card project-card--small relative rounded-2xl bg-neutral-900/40 border border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] p-8 hover:scale-[1.02] transition-all duration-300 overflow-hidden group cursor-pointer h-full flex flex-col"
-               data-controller="gradient reveal project-card"
-               data-project-card-project-slug-value="scandela"
-               data-action="click->project-card#click"
-               role="button"
-               tabindex="0"
-               aria-label="View Scandela project">
-
-            <div class="project-gradient project-gradient--dynamic absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-            <div class="project-gradient project-gradient--static absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-
-            <div class="relative z-10 flex flex-col h-full">
-              <header class="flex justify-between items-start mb-4">
-                <time class="text-sm text-neutral-400 font-medium" datetime="2025-06-01">Sept 2023 – June 2025</time>
-                <a href="https://github.com/Team-Scandela/Scandela"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="text-neutral-400 hover:text-white transition-colors duration-300"
-                   aria-label="View source code on GitHub">
-                  <i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-                </a>
-              </header>
-              <h2 class="text-2xl font-semibold mb-3 text-white">Scandela</h2>
-              <div class="text-neutral-300 leading-relaxed flex-grow">
-                <p class="text-sm">Master's thesis: cartographic analysis platform for public lighting optimization. Helps local authorities reduce electrical costs while ensuring safety.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
+        <% small.each do |project| %>
+          <article class="flex-1 min-h-0">
+            <%= render "featured_card", project: project %>
+          </article>
+        <% end %>
       </div>
+
     </div>
   </div>
 
-  <!-- Section pour les projets mineurs -->
   <section class="max-w-6xl mx-auto mt-16" aria-labelledby="minor-projects-title">
     <header class="flex items-center mb-12">
       <div class="flex-1 h-px bg-white/10" aria-hidden="true"></div>
@@ -154,201 +28,23 @@
       <div class="flex-1 h-px bg-white/10" aria-hidden="true"></div>
     </header>
 
-    <!-- Grille des projets mineurs en masonry -->
     <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" role="list" aria-label="List of minor projects">
-
-      <!-- Area -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2025-01-20">2023</time>
-            <a href="https://github.com/VictorHarri-Chal/AREA" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Area</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A comprehensive automation platform similar to IFTTT and Zapier, divided into 3 main parts: an Android mobile application, a web application, and a server. Built with Node.js Express and MongoDB for the backend, React for the web frontend, and React Native for mobile development.</p>
-        </div>
-      </article>
-
-      <!-- R-Type -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-11-12">2023</time>
-            <a href="https://github.com/VictorHarri-Chal/R-Type" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">R-Type</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A recreation of the famous R-Type arcade game built with SFML and C++. Features include multiplayer cooperative mode for 2-4 players, two difficulty levels (Easy and Hard), and a wave editor for customizing monster spawning. Built with an Entity-Component-System architecture for scalable game object management.</p>
-        </div>
-      </article>
-
-      <!-- Arcade -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-07-05">2022</time>
-            <a href="https://github.com/VictorHarri-Chal/Arcade" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Arcade</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A C++ project recreating an arcade machine with multiple games (Pacman & Nibbler) and multiple graphical libraries (Ncurses, SFML, SDL2). The challenge was building a program that allows players to swap between games and graphical libraries at runtime, changing how the games look.</p>
-        </div>
-      </article>
-
-      <!-- Teams -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-08-10">2022</time>
-            <a href="https://github.com/VictorHarri-Chal/Teams" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Teams</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A C-based network project reproducing Microsoft Teams functionality. Features include user communication, team/channel/thread creation, subscription to team events, and multi-client handling. Built to learn socket programming and communication protocol implementation.</p>
-        </div>
-      </article>
-
-      <!-- The Plazza -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-09-20">2022</time>
-            <a href="https://github.com/VictorHarri-Chal/The-Plazza" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">The Plazza</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A C++ pizzeria simulation using multi-processing, multi-threading, and IPC (inter-process communication). Simulates how a pizzeria works with simultaneous order handling, multiple kitchens created gradually, and cooks with varying availability.</p>
-        </div>
-      </article>
-
-      <!-- Boomberman -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-10-15">2022</time>
-            <a href="https://github.com/VictorHarri-Chal/Boomberman" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Boomberman</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A graphical project built with Raylib, a 3D library, to recreate the famous Bomberman game. This was the final project of my 2nd year at Epitech, featuring strategic bomb placement mechanics and dynamic level design.</p>
-        </div>
-      </article>
-
-      <!-- Pokemon RPG -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-06-15">2021</time>
-            <a href="https://github.com/VictorHarri-Chal/Pokemon-RPG" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Pokemon RPG</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A C-based role-playing game built with CSFML library to recreate a Pokemon game. Features include a large map, dialogues, combat system, and a final boss. This project taught graphical programming, CSFML usage, and team collaboration with 3 teammates.</p>
-        </div>
-      </article>
-
-      <!-- Need4Stek -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-05-20">2021</time>
-            <a href="https://github.com/VictorHarri-Chal/Need4Stek" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Need4Stek</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">An artificial intelligence project coded in C that guides an autonomous car through a virtual racetrack. Features a simulation between CoppeliaSim software and a C program, demonstrating autonomous vehicle navigation and AI decision-making.</p>
-        </div>
-      </article>
-
-      <!-- ASM-C-lib -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-04-15">2021</time>
-            <a href="https://github.com/VictorHarri-Chal/ASM-C-lib" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">ASM-C-lib</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">An assembly project designed to discover and understand assembly language. The goal was to recode common functions from the C library in assembly and compile them into a dynamic shared library that can be used by anyone.</p>
-        </div>
-      </article>
-
-      <!-- Sokoban -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-03-10">2021</time>
-            <a href="https://github.com/VictorHarri-Chal/Sokoban" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Sokoban</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A reproduction of the Japanese Sokoban puzzle game built with the ncurses library in C. Players move boxes to storage locations while avoiding walls and dead ends. The puzzle is solved when all boxes reach their destinations, featuring strategic movement and spatial reasoning.</p>
-        </div>
-      </article>
-
-      <!-- Matchsticks -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-02-15">2021</time>
-            <a href="https://github.com/VictorHarri-Chal/Matchsticks" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Matchsticks</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A C-based implementation of the famous matchsticks game where players take turns removing matchsticks from lines. The player who takes the last matchstick loses. Features an AI opponent that plays randomly, demonstrating basic game logic and turn-based mechanics.</p>
-        </div>
-      </article>
-
-      <!-- Popeye -->
-      <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
-        <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
-        <div class="relative z-10">
-          <header class="flex justify-between items-start mb-3">
-            <time class="text-xs text-neutral-400 font-medium" datetime="2024-01-20">2021</time>
-            <a href="https://github.com/VictorHarri-Chal/Popeye" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View source code on GitHub">
-              <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
-            </a>
-          </header>
-          <h3 class="text-lg font-semibold mb-3 text-white">Popeye</h3>
-          <p class="text-sm text-neutral-300 leading-relaxed">A containerized web poll application similar to Strawpoll, built to learn Docker. Features a microservices architecture with Flask (Python), Redis queue, Java worker, PostgreSQL database, and Node.js result display. Demonstrates containerization and microservices deployment.</p>
-        </div>
-      </article>
-
+      <% @minor.each do |project| %>
+        <article class="relative rounded-xl bg-neutral-900/40 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.05)] p-6 transition-all duration-300 overflow-hidden group break-inside-avoid" data-controller="gradient reveal">
+          <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
+          <div class="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none"></div>
+          <div class="relative z-10">
+            <header class="flex justify-between items-start mb-3">
+              <time class="text-xs text-neutral-400 font-medium" datetime="<%= project[:year] %>"><%= project[:year] %></time>
+              <a href="<%= project[:url] %>" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-300" aria-label="View <%= project[:name] %> source code on GitHub">
+                <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
+              </a>
+            </header>
+            <h3 class="text-lg font-semibold mb-3 text-white"><%= project[:name] %></h3>
+            <p class="text-sm text-neutral-300 leading-relaxed"><%= project[:description] %></p>
+          </div>
+        </article>
+      <% end %>
     </div>
   </section>
 </section>
