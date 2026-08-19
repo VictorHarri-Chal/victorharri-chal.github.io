@@ -1,0 +1,122 @@
+# Single source of truth for the experience page.
+#
+# Entries are listed newest first and rendered in that order.
+#
+# badge : optional short label shown next to the role, for anything that was
+#         not a plain full-time position (internship, coursework, side project)
+# link  : optional, points at the project page when one exists
+
+experience:
+  - company: Publidata
+    role: Full-stack developer
+    location: Remote
+    period: January 2026 - August 2026
+    badge: First role after Epitech
+    description: >-
+      Publidata makes software for French local authorities. I worked on the dashboard their
+      partner cities use to run waste collection, shipping features and fixing things across a
+      Rails monolith. It was fully remote, which turned out to matter as much as the code: I
+      learned to organise myself without anyone looking over my shoulder, and I got serious
+      about building AI into how I work day to day.
+    technologies:
+      - { name: Ruby on Rails, color: red }
+      - { name: PostgreSQL, color: blue }
+      - { name: MongoDB, color: green }
+      - { name: Sidekiq, color: orange }
+      - { name: Redis, color: red }
+      - { name: Elasticsearch, color: yellow }
+
+  - company: NutriFlow
+    role: Solo developer
+    location: Personal product
+    period: July 2025 - present
+    badge: Side project
+    description: >-
+      A nutrition and training tracker I built and still run on my own. It is live, free and
+      ad-free, and I handle all of it: the schema, the features, the deploys.
+    link:
+      url: /projects/nutri-flow
+      label: See the project
+    technologies:
+      - { name: Ruby on Rails 8, color: red }
+      - { name: PostgreSQL, color: blue }
+      - { name: Hotwire, color: cyan }
+      - { name: ViewComponent, color: purple }
+      - { name: Kamal, color: orange }
+      - { name: Docker, color: blue-dark }
+
+  - company: Kuartz
+    role: Full-stack developer
+    location: Nantes
+    period: September 2024 - September 2025
+    badge: During my studies
+    description: >-
+      A Rails monolith serving several clients from one codebase, with modules switched on or
+      off per customer. Front and back in the same app, a lot of tables, and kept close to the
+      current Rails release. I spent the year picking up tickets, adding features and fixing
+      bugs across it.
+    technologies:
+      - { name: Ruby on Rails, color: red }
+      - { name: Hotwire, color: cyan }
+      - { name: Sidekiq, color: orange }
+      - { name: ViewComponent, color: purple }
+      - { name: RSpec, color: green }
+
+  - company: Dvine
+    role: Frontend developer
+    location: Nantes
+    period: April 2023 - August 2023
+    badge: During my studies
+    description: >-
+      Front-end work on an internal analytics dashboard, in Angular and TypeScript.
+    technologies:
+      - { name: Angular, color: red }
+      - { name: TypeScript, color: blue }
+
+  - company: Devfest Nantes
+    role: Speaker and volunteer
+    location: Nantes
+    period: October 2022
+    badge: Event
+    description: >-
+      I pitched our Epitech Innovative Project on stage, and helped run the event as a
+      volunteer for the rest of the weekend.
+    technologies: []
+
+  - company: Easilys
+    role: Data engineer
+    location: Nantes
+    period: September 2021 - December 2021
+    badge: First internship
+    description: >-
+      My first time inside a company. I built automated statistical tooling with Ansible, and
+      picked up SQL and Python along the way. What stuck was less technical than that: seeing
+      how work actually gets planned, and what agile looks like when it is not a slide.
+    technologies:
+      - { name: Ansible, color: red }
+      - { name: Python, color: blue }
+      - { name: SQL, color: indigo }
+
+education:
+  - company: Dankook University
+    role: Exchange year
+    location: Seoul, South Korea
+    period: August 2023 - August 2024
+    description: >-
+      A year abroad through Epitech, studying art, Flutter and Java. Most of what I took from
+      it was learning to work with people spread across very different time zones.
+    technologies:
+      - { name: Flutter, color: cyan }
+      - { name: Java, color: red }
+
+  - company: Epitech
+    role: Master's in computer science
+    location: Nantes
+    period: October 2021 - August 2025
+    description: >-
+      Project-based from the first week, with no lectures to fall back on. C and C++ for the
+      foundations, then Python, React and a lot of getting stuck and working it out.
+    technologies:
+      - { name: C / C++, color: blue }
+      - { name: Python, color: yellow }
+      - { name: React, color: cyan }

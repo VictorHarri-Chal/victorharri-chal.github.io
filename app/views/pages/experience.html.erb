@@ -1,0 +1,23 @@
+<section class="w-full">
+  <h1 class="sr-only">Experience</h1>
+
+  <div class="max-w-4xl mx-auto space-y-8 pt-16">
+    <% @experiences.each do |entry| %>
+      <%= render "experience_entry", entry: entry %>
+    <% end %>
+  </div>
+
+  <section class="max-w-4xl mx-auto mt-16" aria-labelledby="education-title">
+    <header class="flex items-center mb-12">
+      <div class="flex-1 h-px bg-white/10" aria-hidden="true"></div>
+      <h2 id="education-title" class="text-2xl font-semibold text-white px-8 mx-4">Education</h2>
+      <div class="flex-1 h-px bg-white/10" aria-hidden="true"></div>
+    </header>
+
+    <div class="space-y-8">
+      <% @education.each do |entry| %>
+        <%= render "experience_entry", entry: entry %>
+      <% end %>
+    </div>
+  </section>
+</section>

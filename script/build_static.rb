@@ -33,7 +33,7 @@ def project_slugs
 end
 
 def pages
-  [ "/", "/about", "/contact", "/projects" ] + project_slugs.map { |slug| "/projects/#{slug}" }
+  [ "/", "/about", "/experience", "/contact", "/projects" ] + project_slugs.map { |slug| "/projects/#{slug}" }
 end
 
 def wait_for_server
