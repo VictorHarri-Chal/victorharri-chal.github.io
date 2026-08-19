@@ -97,17 +97,6 @@ experience:
       - { name: SQL, color: indigo }
 
 education:
-  - company: Dankook University
-    role: Exchange year
-    location: Seoul, South Korea
-    period: August 2023 - August 2024
-    description: >-
-      A year abroad through Epitech, studying art, Flutter and Java. Most of what I took from
-      it was learning to work with people spread across very different time zones.
-    technologies:
-      - { name: Flutter, color: cyan }
-      - { name: Java, color: red }
-
   - company: Epitech
     role: Master's in computer science
     location: Nantes
@@ -119,3 +108,14 @@ education:
       - { name: C / C++, color: blue }
       - { name: Python, color: yellow }
       - { name: React, color: cyan }
+  - company: Dankook University
+    role: Exchange year
+    location: Seoul, South Korea
+    period: August 2023 - August 2024
+    description: >-
+      A year abroad through Epitech, studying art, Flutter and Java. Most of what I took from
+      it was learning to work with people spread across very different time zones.
+    technologies:
+      - { name: Flutter, color: cyan }
+      - { name: Java, color: red }
+

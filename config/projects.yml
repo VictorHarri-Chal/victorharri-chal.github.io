@@ -4,7 +4,7 @@
 # /projects/<slug>. `minor` projects only appear as a card in the grid below.
 # The CI build reads the slugs from here to know which pages to generate.
 #
-# accent  : card colour, mapped to Tailwind classes in ProjectsHelper::ACCENTS
+# accent  : card color, mapped to Tailwind classes in ProjectsHelper::ACCENTS
 # size    : `large` gets the full-height card, `small` the stacked ones
 # teaser  : short copy shown on the card
 # summary : longer copy shown at the top of the detail page
@@ -22,7 +22,7 @@ featured:
       A nutrition and training tracker for people who log both. You build a food library you
       actually use, scan a barcode instead of typing the label, and log meals against a daily
       calendar that keeps a running total of your macros. Training gets the same treatment:
-      1,100 illustrated exercises, reusable programmes, and cardio scored with ACSM equations.
+      1,100 illustrated exercises, reusable programs, and cardio scored with ACSM equations.
       Live at nutriflow.in, free and without ads.
     summary: >-
       I was logging meals in one app and workouts in another, and neither knew the other
@@ -31,7 +31,7 @@ featured:
       of typing the label. Meals go on a day-by-day calendar that keeps a running total of
       your calories and around twenty nutrients. Recipes are costed to the gram and turn
       straight into a shopping list. Training gets the same treatment: 1,100 illustrated
-      exercises, sets and reps for strength work, ACSM equations for cardio, and programmes
+      exercises, sets and reps for strength work, ACSM equations for cardio, and programs
       you can reuse week to week. Weight, measurements, hydration, fasting and mood are
       tracked alongside. It runs on Rails 8 in production, I deploy it myself with Kamal, and
       it stays free and ad-free.
@@ -54,7 +54,7 @@ featured:
       - Calorie targets worked out from your own goals rather than a generic formula
       - Over 1,100 illustrated exercises, with sets, reps and weight for strength work
       - Cardio sessions scored with ACSM equations
-      - Reusable training programmes you can carry from week to week
+      - Reusable training programs you can carry from week to week
       - Progress tracking for weight, measurements, hydration, fasting and mood
 
   - slug: vigie
@@ -65,12 +65,12 @@ featured:
     size: small
     teaser: >-
       Waste collection teams need to know which containers are full before they send a truck
-      out. Vigie maps every collection point, colours it by fill level, and builds an
-      optimised round from the ones that actually need emptying.
+      out. Vigie maps every collection point, colors it by fill level, and builds an
+      optimized round from the ones that actually need emptying.
     summary: >-
       Waste collection teams need to know which containers are full before they send a truck
       out, and most of them are working from spreadsheets. Vigie puts every collection point
-      on a map, coloured by fill level, and builds a round from the ones that actually need
+      on a map, colored by fill level, and builds a round from the ones that actually need
       emptying. The routing follows real roads through OSRM rather than drawing straight
       lines between points. Each container opens a panel with its sensor history, its
       deposits, its open incidents and a thirty-day fill graph. Incidents can be filtered,
@@ -93,7 +93,7 @@ featured:
       - { name: OSRM routing, color: yellow }
       - { name: Render, color: emerald }
     features:
-      - Map with colour-coded fill levels, waste type filters, search by name or ID, and a container panel loaded in a Turbo Frame
+      - Map with color-coded fill levels, waste type filters, search by name or ID, and a container panel loaded in a Turbo Frame
       - Container panel with four tabs for timeline, sensors, deposits and incidents, plus a thirty-day fill graph
       - Incident handling with status filters, resolve and reopen actions, note editing over Turbo Streams, and CSV export
       - Five dashboards covering fill evolution, breakdown by waste type, monthly incidents, and the busiest and most problematic points
@@ -111,7 +111,7 @@ featured:
     summary: >-
       An Airbnb-style rental site where the map does most of the work. Listings filter in real
       time as you move around, and you book straight from the listing page. Hosts manage their
-      properties and the requests coming in, guests keep a shortlist of favourites, and a
+      properties and the requests coming in, guests keep a shortlist of favorites, and a
       chatbot built on the OpenAI API suggests places to stay and things to do from a plain
       description of what you are after. Images are stored on AWS S3.
     link:
@@ -130,7 +130,7 @@ featured:
     features:
       - Mapbox map with filters that apply as you move around
       - Booking handled from the listing page, with availability checks
-      - Favourites and incoming request management
+      - Favorites and incoming request management
       - Chatbot suggesting stays and things to do from a plain description
       - Image storage on AWS S3
       - Search and filtering across the catalogue
@@ -169,7 +169,7 @@ featured:
       - { name: Mapbox, color: indigo }
     features:
       - Map of the full streetlight network with the technical detail behind each point
-      - Filters built for optimisation decisions rather than generic browsing
+      - Filters built for optimization decisions rather than generic browsing
       - Simulation of a change and its effect on cost and coverage before it is committed
       - Cost analysis covering both electricity spend and carbon
       - Safety and lighting quality assessment across an area

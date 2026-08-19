@@ -9,14 +9,14 @@
     <span aria-hidden="true">&middot;</span>
     <span><%= entry.location %></span>
     <% if entry.badge %>
-      <span class="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-xs"><%= entry.badge %></span>
+      <span class="px-2 py-1 rounded-full bg-white/5 border border-white/10 text-xs"><%= entry.badge %></span>
     <% end %>
   </div>
 
   <p class="text-neutral-300 leading-relaxed"><%= entry.description %></p>
 
   <% if entry.technologies.any? %>
-    <div class="flex flex-wrap gap-2 mt-5">
+    <div class="flex flex-wrap gap-2 mt-6">
       <% entry.technologies.each do |technology| %>
         <span class="px-3 py-1 <%= technology_classes(technology) %> rounded-full text-sm"><%= technology[:name] %></span>
       <% end %>
@@ -24,7 +24,7 @@
   <% end %>
 
   <% if entry.link %>
-    <div class="mt-5">
+    <div class="mt-6">
       <%= link_to entry.link[:url], class: "inline-flex items-center gap-2 text-white hover:text-neutral-300 transition-colors duration-300 font-medium text-sm" do %>
         <%= entry.link[:label] %>
         <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>

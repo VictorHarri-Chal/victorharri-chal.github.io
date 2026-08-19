@@ -1,7 +1,7 @@
 # Technologies shown on the about page, in two levels.
 #
 # `icon` holds the full Font Awesome classes and `color` the full Tailwind text
-# colour, both spelled out so Tailwind's scanner can see them.
+# color, both spelled out so Tailwind's scanner can see them.
 
 groups:
   - name: Day to day
