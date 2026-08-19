@@ -76,6 +76,8 @@ featured:
       deposits, its open incidents and a thirty-day fill graph. Incidents can be filtered,
       resolved, reopened, annotated and exported. Five dashboards cover fill evolution,
       breakdown by waste type, monthly incidents and the points that cause the most trouble.
+      I originally built it as the technical test for Publidata, which is how I ended up
+      working there.
     link:
       url: https://github.com/VictorHarri-Chal/Vigie
       label: View source code

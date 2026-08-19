@@ -1,235 +1,66 @@
 <section class="w-full">
-  <!-- Light section with gradient container -->
+  <h1 class="sr-only">About</h1>
+
   <div class="max-w-4xl mx-auto space-y-8 pt-16">
-    <div class="relative rounded-2xl bg-neutral-900/40 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-12 hover:scale-[1.02] transition-all duration-300 overflow-hidden group" data-controller="gradient reveal">
-      <div class="absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-      <div class="relative z-10">
-        <h2 class="text-3xl font-semibold mb-6 text-white flex items-center gap-3">
-          <i class="fa-solid fa-rocket text-2xl"></i>
-          My Journey
-        </h2>
-        <div class="space-y-4 text-neutral-300 leading-relaxed">
-          <p>I grew up online, breaking and rebuilding early websites just to see how they worked. That curiosity shaped how I see tech and what it can change.</p>
-          <p>Studying computer science felt obvious: I like logic, problem solving, and building things that are actually useful. I recently graduated from Epitech Nantes, where the project-led approach kept me curious and hands-on.</p>
-          <p>During my final year, I joined Kuartz, a small company where I discovered Ruby on Rails. Working with Rails developers who were also teaching at Le Wagon, I got mentored by the CTO and fell in love with the framework. That experience defined my path forward.</p>
-        </div>
+    <%= render layout: "shared/panel" do %>
+      <h2 class="text-3xl font-semibold mb-6 text-white flex items-center gap-3">
+        <i class="fa-solid fa-rocket text-2xl" aria-hidden="true"></i>
+        Who I am
+      </h2>
+      <div class="space-y-4 text-neutral-300 leading-relaxed">
+        <p>I'm Victor. I write Ruby on Rails, mostly on the backend.</p>
+        <p>It started the way it does for a lot of people my age: pulling apart websites to see what made them work. Epitech in Nantes came after, then a year in Seoul. I did C and C++ first, then a stretch of front-end in Angular and React. Rails arrived in 2024 and I stopped looking around.</p>
+        <p>The things I've built tend to have real users behind them. A dashboard city agents use to run waste collection. An internal analytics tool. A nutrition app that's mine, that I keep running.</p>
+        <p>French is my first language. I work in English, and I studied Chinese at university.</p>
       </div>
-    </div>
+    <% end %>
 
-    <div class="relative rounded-2xl bg-neutral-900/40 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-12 hover:scale-[1.02] transition-all duration-300 overflow-hidden group" data-controller="gradient reveal">
-      <div class="absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-      <div class="relative z-10">
-        <h2 class="text-3xl font-semibold mb-6 text-white flex items-center gap-3">
-          <i class="fa-solid fa-bolt text-2xl"></i>
-          Technical Evolution
-        </h2>
-        <div class="space-y-4 text-neutral-300 leading-relaxed">
-          <p>I started with C and C++ at Epitech, learning memory management and how computers work at a low level. That foundation matters, but I wanted to build things people actually use. So I moved to front-end and mobile—React, Angular, Flutter—and saw how modern frameworks make development faster and more intuitive.</p>
-          <p>Then Rails happened. At Kuartz, the CTO mentored me personally and I got to work with Hotwire, Stimulus, Turbo, RSpec, Kamal, Action Cable—the whole ecosystem. What struck me was how intuitive Rails is. You write less code, ship faster, and the conventions make sense. Being around Rails enthusiasts who were passionate about it made me fall in love with it too.</p>
-          <p>I also spent a year in South Korea, working with international teams across time zones. That taught me how to collaborate remotely and adapt to different working cultures. Our final year project reinforced this—we shipped a complete product while coordinating across continents.</p>
-        </div>
+    <%= render layout: "shared/panel" do %>
+      <h2 class="text-3xl font-semibold mb-6 text-white flex items-center gap-3">
+        <i class="fa-solid fa-bolt text-2xl" aria-hidden="true"></i>
+        How I work
+      </h2>
+      <div class="space-y-4 text-neutral-300 leading-relaxed">
+        <p>Publidata was fully remote for eight months, and that's where I learned to actually work alone. Nobody checking in. You pick up what needs doing, you get it done, you say where you are. It took me a while to be any good at it.</p>
+        <p>It's also where I got serious about AI. I've built a setup around it that covers planning and review as much as writing code, and I tear it up every few months because the tools keep moving. It's part of how I work now, not a gadget I bring out for show.</p>
+        <p>I like small teams and agile that stays lightweight. I'd rather own something from a vague spec through to production than pick up a ticket where all the thinking has already been done. And I try to leave code the next person can read without asking me about it.</p>
       </div>
-    </div>
+    <% end %>
 
-    <div class="relative rounded-2xl bg-neutral-900/40 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-12 hover:scale-[1.02] transition-all duration-300 overflow-hidden group" data-controller="gradient reveal">
-      <div class="absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-      <div class="relative z-10">
-        <h2 class="text-3xl font-semibold mb-6 text-white flex items-center gap-3">
-          <i class="fa-solid fa-bullseye text-2xl"></i>
-          My Goals
-        </h2>
-        <div class="space-y-4 text-neutral-300 leading-relaxed">
-          <p>My final year at Epitech was about shipping real products. At Kuartz, working alongside Rails experts confirmed what I suspected—Rails is fast, intuitive, and powerful. It matches how I like to build software.</p>
-          <p>I'm now specialized in Ruby on Rails and looking for opportunities in France or abroad. I want to build robust apps, keep learning, and work with teams that care about clean code and maintainability.</p>
-          <p>Those five years taught me rigor and autonomy. Combined with Rails and my international experience, I'm ready to help teams ship tools people actually use.</p>
-        </div>
+    <%= render layout: "shared/panel" do %>
+      <h2 class="text-3xl font-semibold mb-6 text-white flex items-center gap-3">
+        <i class="fa-solid fa-bullseye text-2xl" aria-hidden="true"></i>
+        What I'm looking for
+      </h2>
+      <div class="space-y-4 text-neutral-300 leading-relaxed">
+        <p>I'm looking for a Rails job. Full stack, though I'm more useful on the backend.</p>
+        <p>Remote, ideally. I've done it and it suits me, so it's the last thing I'd give up. Where the company sits matters much less: France, elsewhere in Europe, further out. I'd move for the right one.</p>
+        <p>Past that I don't have a long list. Something people actually use, a team small enough that I know what everyone is doing, a codebase old enough to have some history in it. Front-end work in React or TypeScript is fine by me if that's what the job needs.</p>
       </div>
-    </div>
+    <% end %>
 
-    <div class="relative rounded-2xl bg-neutral-900/40 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-12 hover:scale-[1.02] transition-all duration-300 overflow-hidden group" data-controller="gradient reveal">
-      <div class="absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-      <div class="relative z-10">
-        <h2 class="text-3xl font-semibold mb-6 text-white flex items-center gap-3">
-          <i class="fa-solid fa-code text-2xl"></i>
-          Technologies I'm familiar with
-        </h2>
+    <%= render layout: "shared/panel" do %>
+      <h2 class="text-3xl font-semibold mb-6 text-white flex items-center gap-3">
+        <i class="fa-solid fa-code text-2xl" aria-hidden="true"></i>
+        Technologies
+      </h2>
 
-        <!-- Langages de programmation -->
-        <div class="mb-8">
+      <% @skill_groups.each_with_index do |group, index| %>
+        <div class="<%= "mb-8" unless index == @skill_groups.size - 1 %>">
           <h3 class="text-xl font-medium mb-4 text-white flex items-center gap-2">
-            <i class="fa-solid fa-language text-lg"></i>
-            Programming languages
+            <i class="<%= group[:icon] %> text-lg" aria-hidden="true"></i>
+            <%= group[:name] %>
           </h3>
           <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-gem text-3xl text-red-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Ruby</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-js-square text-3xl text-yellow-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">JavaScript</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-code text-3xl text-blue-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">C</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-code text-3xl text-blue-700 mb-2"></i>
-              <span class="text-sm text-neutral-300">C++</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-python text-3xl text-blue-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Python</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-java text-3xl text-red-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Java</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-html5 text-3xl text-orange-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">HTML</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-css3-alt text-3xl text-blue-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">CSS</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-mobile-alt text-3xl text-blue-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Dart</span>
-            </div>
+            <% group[:technologies].each do |technology| %>
+              <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
+                <i class="<%= technology[:icon] %> text-3xl <%= technology[:color] %> mb-2" aria-hidden="true"></i>
+                <span class="text-sm text-neutral-300"><%= technology[:name] %></span>
+              </div>
+            <% end %>
           </div>
         </div>
-
-        <!-- Frameworks & Librairies -->
-        <div class="mb-8">
-          <h3 class="text-xl font-medium mb-4 text-white flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-lg"></i>
-            Frameworks & Libraries
-          </h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-gem text-3xl text-red-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Rails</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fa-solid fa-bolt text-3xl text-red-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Hotwire</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-react text-3xl text-cyan-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">React</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-angular text-3xl text-red-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">Angular</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-node-js text-3xl text-green-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Node</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-leaf text-3xl text-green-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">Spring</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-react text-3xl text-cyan-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">React Native</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-mobile-alt text-3xl text-blue-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">Flutter</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-js-square text-3xl text-blue-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">TypeScript</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-css3-alt text-3xl text-cyan-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Tailwind</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Outils & Méthodologies -->
-        <div class="mb-8">
-          <h3 class="text-xl font-medium mb-4 text-white flex items-center gap-2">
-            <i class="fa-solid fa-tools text-lg"></i>
-            Tools & Methodologies
-          </h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-git-alt text-3xl text-orange-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Git</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-github text-3xl text-white mb-2"></i>
-              <span class="text-sm text-neutral-300">GitHub</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-docker text-3xl text-blue-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Docker</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-tasks text-3xl text-green-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">Agile</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-users text-3xl text-purple-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">Scrum</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-figma text-3xl text-purple-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Figma</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-project-diagram text-3xl text-blue-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">Whimsical</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-pencil-ruler text-3xl text-orange-400 mb-2"></i>
-              <span class="text-sm text-neutral-300">Moqup</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-book text-3xl text-gray-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">Notion</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fab fa-jira text-3xl text-blue-500 mb-2"></i>
-              <span class="text-sm text-neutral-300">Jira</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bases de données -->
-        <div>
-          <h3 class="text-xl font-medium mb-4 text-white flex items-center gap-2">
-            <i class="fa-solid fa-database text-lg"></i>
-            Databases
-          </h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-database text-3xl text-blue-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">PostgreSQL</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-leaf text-3xl text-green-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">MongoDB</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-server text-3xl text-orange-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">MySQL</span>
-            </div>
-            <div class="flex flex-col items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <i class="fas fa-bolt text-3xl text-red-600 mb-2"></i>
-              <span class="text-sm text-neutral-300">Redis</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
   </div>
 </section>
