@@ -1,7 +1,7 @@
 # Reads the project catalog from config/projects.yml. There is no database:
 # the site is generated as static HTML, so the YAML file is the source of truth.
 class Project
-  CATALOG_PATH = Rails.root.join("config", "projects.yml")
+  include Catalog
 
   attr_reader :slug, :name, :period, :datetime, :accent, :size,
               :teaser, :summary, :link, :technologies, :features
@@ -44,14 +44,6 @@ class Project
 
     private
 
-    def catalog
-      return read_catalog if Rails.application.config.enable_reloading
-
-      @catalog ||= read_catalog
-    end
-
-    def read_catalog
-      YAML.load_file(CATALOG_PATH, symbolize_names: true)
-    end
+    def catalog_name = "projects"
   end
 end
