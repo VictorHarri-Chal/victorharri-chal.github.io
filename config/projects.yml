@@ -19,22 +19,24 @@ featured:
     accent: purple
     size: large
     teaser: >-
-      A nutrition and training tracker for people who log both. You build a food library you
-      actually use, scan a barcode instead of typing the label, and log meals against a daily
-      calendar that keeps a running total of your macros. Training gets the same treatment:
-      1,100 illustrated exercises, reusable programs, and cardio scored with ACSM equations.
-      Live at nutriflow.in, free and without ads.
+      I have been lifting for four years, and I got tired of juggling apps that each did one
+      part well and made the rest painful. NutriFlow is the one I wanted to exist. Calories
+      and macros tracked day by day, recipes broken down to the gram, foods added without
+      fighting a form. Training programs you build once and reuse. Weight, body measurements
+      and the statistics that come with them. All of it in the same app, with no paywall
+      halfway through a session and no ads.
     summary: >-
-      I was logging meals in one app and workouts in another, and neither knew the other
-      existed. NutriFlow is what came out of fixing that for myself. You build a food library
-      you actually use, with Nutri-Score, additives and allergens, and scan a barcode instead
-      of typing the label. Meals go on a day-by-day calendar that keeps a running total of
-      your calories and around twenty nutrients. Recipes are costed to the gram and turn
-      straight into a shopping list. Training gets the same treatment: 1,100 illustrated
-      exercises, sets and reps for strength work, ACSM equations for cardio, and programs
-      you can reuse week to week. Weight, measurements, hydration, fasting and mood are
-      tracked alongside. It runs on Rails 8 in production, I deploy it myself with Kamal, and
-      it stays free and ad-free.
+      Every app in this space does one part of the job well and gets in your way somewhere
+      else. After a dozen of them I stopped looking and built the one I wanted. Calories and macros are
+      tracked against a day-by-day calendar, following around twenty nutrients rather than
+      the usual three. Foods go in without a fight: a personal library you can correct,
+      Nutri-Score and allergen data, and a barcode scanner so you are not typing labels.
+      Recipes are costed to the gram and turn into a shopping list. On the training side you
+      build programs once and reuse them, log strength sessions set by set, and get cardio
+      scored properly instead of guessed at. Weight, body measurements, hydration and fasting
+      are tracked alongside, with the statistics to make sense of them. I designed, built and
+      shipped all of it on my own, and the product decisions took as long as the code. It is
+      free and carries no ads, which is not true of much else in this space.
     link:
       url: https://nutriflow.in/
       label: Visit the site
@@ -55,7 +57,7 @@ featured:
       - Over 1,100 illustrated exercises, with sets, reps and weight for strength work
       - Cardio sessions scored with ACSM equations
       - Reusable training programs you can carry from week to week
-      - Progress tracking for weight, measurements, hydration, fasting and mood
+      - Progress tracking and statistics for weight, body measurements, hydration and fasting
 
   - slug: vigie
     name: Vigie

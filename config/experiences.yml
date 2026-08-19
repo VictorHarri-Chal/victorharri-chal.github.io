@@ -32,12 +32,11 @@ experience:
     period: July 2025 - present
     badge: Side project
     description: >-
-      I have been lifting for four years and I have tried most of the apps built for it. They
-      all do one or two things well, then get in your way somewhere else. NutriFlow is my
-      answer to that: one place for nutrition, training and everything around them, with the
-      features I actually wanted out of the dozen apps I tested and none of the parts that
-      made me leave them. I designed it, built it and shipped it on my own, and the product
-      work was as big a job as the code.
+      A product I own from end to end. I built NutriFlow after four years of lifting and a
+      dozen apps that each solved part of the problem, and it now runs in production with
+      real users on it. The schema, the features, the deploys and every product call are
+      mine, which is a different kind of work from picking up a ticket and a useful
+      counterweight to it.
     technologies:
       - { name: Ruby on Rails 8, color: red }
       - { name: PostgreSQL, color: blue }
