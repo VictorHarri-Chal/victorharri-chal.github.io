@@ -2,8 +2,7 @@
 #
 # Entries are listed newest first and rendered in that order.
 #
-# badge : optional short label shown next to the role, for anything that was
-#         not a plain full-time position (internship, coursework, side project)
+# badge : short label shown next to the role, giving the nature of the position
 # link  : optional, points at the project page when one exists
 
 experience:
@@ -11,13 +10,13 @@ experience:
     role: Full-stack developer
     location: Remote
     period: January 2026 - August 2026
-    badge: First role after Epitech
+    badge: Permanent contract
     description: >-
-      Publidata makes software for French local authorities. I worked on the dashboard their
-      partner cities use to run waste collection, shipping features and fixing things across a
-      Rails monolith. It was fully remote, which turned out to matter as much as the code: I
-      learned to organise myself without anyone looking over my shoulder, and I got serious
-      about building AI into how I work day to day.
+      My first job out of Epitech. Publidata makes software for French local authorities, and
+      I worked on the dashboard their partner cities use to run waste collection, shipping
+      features and fixing bugs across a Rails monolith. Fully remote for the whole eight
+      months, which is where I learned to run my own week, and where I started building AI
+      properly into how I work.
     technologies:
       - { name: Ruby on Rails, color: red }
       - { name: PostgreSQL, color: blue }
@@ -49,7 +48,7 @@ experience:
     role: Full-stack developer
     location: Nantes
     period: September 2024 - September 2025
-    badge: During my studies
+    badge: Apprenticeship, then fixed-term
     description: >-
       A Rails monolith serving several clients from one codebase, with modules switched on or
       off per customer. Front and back in the same app, a lot of tables, and kept close to the
@@ -66,7 +65,7 @@ experience:
     role: Frontend developer
     location: Nantes
     period: April 2023 - August 2023
-    badge: During my studies
+    badge: Internship
     description: >-
       Front-end work on an internal analytics dashboard, in Angular and TypeScript.
     technologies:
@@ -86,8 +85,8 @@ experience:
   - company: Easilys
     role: Data engineer
     location: Nantes
-    period: September 2021 - December 2021
-    badge: First internship
+    period: September 2022 - December 2022
+    badge: Internship
     description: >-
       My first time inside a company. I built automated statistical tooling with Ansible, and
       picked up SQL and Python along the way. What stuck was less technical than that: seeing
