@@ -1,4 +1,4 @@
-# 🚀 Portfolio - Victor Harri-Chal
+# Portfolio - Victor Harri-Chal
 
 <div align="center">
 
@@ -7,51 +7,85 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Stimulus](https://img.shields.io/badge/Stimulus-00D4FF?style=for-the-badge&logo=stimulus&logoColor=white)
 
-**Portfolio personnel moderne développé avec Ruby on Rails 8**
+**Mon portfolio personnel, développé avec Ruby on Rails 8**
 
-[🌐 Voir le site](https://victorharri-chal.com) • [📧 Contact](mailto:victorharrichal@yahoo.com)
+[Voir le site](https://victorharri-chal.github.io) · [Me contacter](mailto:victorharrichal@yahoo.com)
 
 </div>
 
 ---
 
-## 👨‍💻 À propos
+## À propos
 
-Portfolio personnel présentant mes compétences techniques, mon parcours professionnel et mes projets réalisés avec des technologies modernes.
+Portfolio présentant mon parcours, mes compétences et mes projets. C'est une
+application Rails classique en développement, exportée en site statique et
+publiée sur GitHub Pages à chaque push sur `main`.
 
-## ✨ Fonctionnalités
+## Contenu
 
-- **Page d'accueil** : Design moderne avec effets de distorsion et animations fluides
-- **Section Projets** : Présentation détaillée de mes principaux projets (NutriFlow, NestioBnb, Scandela)
-- **Section À propos** : Parcours académique, compétences techniques et expérience professionnelle
-- **Section Contact** : Formulaire de contact et liens vers les réseaux professionnels
+- **Accueil** : présentation et navigation
+- **Projets** : quatre projets principaux avec leur fiche détaillée, plus une
+  sélection de projets d'études
+- **À propos** : parcours, évolution technique et technologies
+- **Contact** : LinkedIn, e-mail, GitHub et CV
 
-## 🛠 Technologies utilisées
+Les projets principaux sont NutriFlow, Vigie, NestioBnb et Scandela.
 
-- **Ruby on Rails 8** - Framework web principal
-- **Tailwind CSS** - Framework CSS utilitaire
-- **Stimulus** - Contrôleurs JavaScript légers
-- **Turbo** - Accélérateur de pages SPA-like
-- **Importmap** - Gestion des modules JavaScript
-- **Font Awesome** - Icônes
+## Stack
 
-## 🌐 Déploiement
+- **Ruby on Rails 8** avec Propshaft et Importmap
+- **Hotwire** (Turbo + Stimulus) pour les interactions
+- **Tailwind CSS v4**
+- Aucune base de données : le site n'en a pas besoin
 
-Le site est déployé automatiquement sur **GitHub Pages** via GitHub Actions. Chaque push sur la branche `main` déclenche un workflow qui :
+## Développement
 
-1. Génère un site statique à partir de l'application Rails
-2. Télécharge toutes les pages (home, about, contact, projects et leurs détails)
-3. Corrige les chemins relatifs pour la compatibilité GitHub Pages
-4. Déploie le site sur GitHub Pages
+```bash
+bin/setup          # installe les dépendances
+bin/dev            # lance le serveur et le watcher Tailwind
+```
 
-Le workflow est configuré dans `.github/workflows/deploy.yml`.
+Le site est alors disponible sur `http://localhost:3000`.
+
+## Ajouter ou modifier un projet
+
+Tout le contenu des projets vit dans [`config/projects.yml`](config/projects.yml).
+Une entrée dans `featured` génère à la fois la carte sur la page projets et sa
+fiche détaillée, et le script de build y lit la liste des pages à produire. Il
+n'y a rien d'autre à toucher.
+
+## Déploiement
+
+Chaque push sur `main` déclenche [le workflow](.github/workflows/deploy.yml), qui :
+
+1. précompile les assets ;
+2. démarre le serveur Rails en mode production ;
+3. exécute [`script/build_static.rb`](script/build_static.rb), qui récupère
+   chaque page et l'écrit dans `_site/` ;
+4. publie le résultat sur GitHub Pages.
+
+Le script vérifie chaque page avant de l'écrire. Une réponse en erreur, une page
+vide ou une exception Rails interrompt le build au lieu d'être mise en ligne.
+
+Le dépôt étant un site utilisateur servi à la racine du domaine, les chemins
+absolus produits par Rails fonctionnent tels quels : aucune réécriture de liens
+n'est nécessaire. Chaque page est écrite en `<chemin>/index.html`, avec une copie
+en `<chemin>.html` pour les adresses publiées auparavant.
+
+Pour reproduire le build en local :
+
+```bash
+export RAILS_ENV=production SECRET_KEY_BASE=peu-importe
+bin/rails assets:precompile
+bin/rails server -e production -p 3000 -b 127.0.0.1 &
+bundle exec ruby script/build_static.rb
+cd _site && python3 -m http.server 4000
+```
 
 ---
 
 <div align="center">
 
-**Développé avec ❤️ par Victor Harri-Chal**
-
-[LinkedIn](https://linkedin.com/in/victorharri-chal) • [GitHub](https://github.com/VictorHarri-Chal) • [Portfolio](https://victorharri-chal.com)
+[LinkedIn](https://www.linkedin.com/in/victor-harri-chal/) · [GitHub](https://github.com/VictorHarri-Chal) · [Portfolio](https://victorharri-chal.github.io)
 
 </div>

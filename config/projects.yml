@@ -12,22 +12,70 @@
 #           for a live site rather than a source repository)
 
 featured:
+  - slug: nutri-flow
+    name: NutriFlow
+    period: July 2025 - present
+    datetime: "2025-07-01"
+    accent: purple
+    size: large
+    teaser: >-
+      A nutrition and training tracker for people who log both. You build a food library you
+      actually use, scan a barcode instead of typing the label, and log meals against a daily
+      calendar that keeps a running total of your macros. Training gets the same treatment:
+      1,100 illustrated exercises, reusable programmes, and cardio scored with ACSM equations.
+      Live at nutriflow.in, free and without ads.
+    summary: >-
+      I was logging meals in one app and workouts in another, and neither knew the other
+      existed. NutriFlow is what came out of fixing that for myself. You build a food library
+      you actually use, with Nutri-Score, additives and allergens, and scan a barcode instead
+      of typing the label. Meals go on a day-by-day calendar that keeps a running total of
+      your calories and around twenty nutrients. Recipes are costed to the gram and turn
+      straight into a shopping list. Training gets the same treatment: 1,100 illustrated
+      exercises, sets and reps for strength work, ACSM equations for cardio, and programmes
+      you can reuse week to week. Weight, measurements, hydration, fasting and mood are
+      tracked alongside. It runs on Rails 8 in production, I deploy it myself with Kamal, and
+      it stays free and ad-free.
+    link:
+      url: https://nutriflow.in/
+      label: Visit the site
+      icon: fa-solid fa-arrow-up-right-from-square
+    technologies:
+      - { name: Ruby on Rails 8, color: red }
+      - { name: PostgreSQL, color: green }
+      - { name: Hotwire (Turbo + Stimulus), color: cyan }
+      - { name: ViewComponent, color: purple }
+      - { name: Tailwind CSS, color: indigo }
+      - { name: Kamal, color: orange }
+      - { name: Docker, color: blue-dark }
+    features:
+      - Day-by-day meal calendar with running totals for calories and around twenty nutrients
+      - Personal food library with Nutri-Score, additives and allergens, plus barcode scanning
+      - Recipes costed to the gram that turn straight into a shopping list
+      - Calorie targets worked out from your own goals rather than a generic formula
+      - Over 1,100 illustrated exercises, with sets, reps and weight for strength work
+      - Cardio sessions scored with ACSM equations
+      - Reusable training programmes you can carry from week to week
+      - Progress tracking for weight, measurements, hydration, fasting and mood
+
   - slug: vigie
     name: Vigie
     period: March 2026
     datetime: "2026-03-01"
     accent: amber
-    size: large
+    size: small
     teaser: >-
-      Vigie gives municipal teams a real-time view of their entire waste collection network.
-      Spot which collection points need emptying on a color-coded map, plan optimized tours
-      with road-accurate routing, manage incidents, and track fleet performance through
-      dedicated dashboards — all in one place.
+      Waste collection teams need to know which containers are full before they send a truck
+      out. Vigie maps every collection point, colours it by fill level, and builds an
+      optimised round from the ones that actually need emptying.
     summary: >-
-      Vigie gives municipal teams a real-time view of their entire waste collection network.
-      Spot which collection points need emptying on a color-coded map, plan optimized tours
-      with road-accurate routing, manage incidents, and track fleet performance through
-      dedicated dashboards — all in one place.
+      Waste collection teams need to know which containers are full before they send a truck
+      out, and most of them are working from spreadsheets. Vigie puts every collection point
+      on a map, coloured by fill level, and builds a round from the ones that actually need
+      emptying. The routing follows real roads through OSRM rather than drawing straight
+      lines between points. Each container opens a panel with its sensor history, its
+      deposits, its open incidents and a thirty-day fill graph. Incidents can be filtered,
+      resolved, reopened, annotated and exported. Five dashboards cover fill evolution,
+      breakdown by waste type, monthly incidents and the points that cause the most trouble.
     link:
       url: https://github.com/VictorHarri-Chal/Vigie
       label: View source code
@@ -43,46 +91,11 @@ featured:
       - { name: OSRM routing, color: yellow }
       - { name: Render, color: emerald }
     features:
-      - Interactive map with color-coded fill levels, waste type filters, search by name or ID, and a PAV detail panel in Turbo Frame
-      - PAV panel with 4 tabs (timeline, sensors, deposits, incidents) and a 30-day Chart.js fill evolution graph
-      - Incident management with status filters, resolve/reopen actions, Turbo Stream note editing, and CSV export
-      - "5 Chart.js dashboards: fill evolution, breakdown by waste type, monthly incidents, top active and most problematic PAVs"
-      - Tour planning with threshold slider, OSRM routing on real roads, animated polyline, and ordered PAV list with total distance
-
-  - slug: nutri-flow
-    name: NutriFlow
-    period: July 2025
-    datetime: "2025-07-01"
-    accent: purple
-    size: small
-    teaser: >-
-      Fitness and nutrition tracking for athletes. Customizable food database, daily meal
-      planning with macro tracking, recipe management, shopping lists, and workout
-      performance tracking.
-    summary: >-
-      Comprehensive fitness and nutrition tracking application designed for athletes and
-      health-conscious individuals. Features include customizable food database, daily meal
-      planning with macro tracking, personalized calorie calculations, recipe management,
-      interactive shopping lists, and workout performance tracking.
-    link:
-      url: https://github.com/VictorHarri-Chal/NutriFlow
-      label: View source code
-      icon: fa-brands fa-github
-    technologies:
-      - { name: Ruby on Rails, color: red }
-      - { name: Hotwire, color: blue }
-      - { name: PostgreSQL, color: green }
-      - { name: JavaScript, color: orange }
-      - { name: Tailwind CSS, color: indigo }
-    features:
-      - Customizable food database where users can add their most consumed foods with macros and calories
-      - Daily calendar for meal tracking throughout the day with meal management and total calorie, protein, lipid tracking
-      - Daily calorie needs calculation based on individual goals influencing daily requirements
-      - Recipe management system with all necessary ingredients, macros, and nutritional information
-      - Interactive shopping list directly linked to food database and recipes for easy ingredient addition
-      - Workout tracking for strength training to monitor performance and easily modify programs
-      - Responsive interface with real-time updates using Hotwire
-      - Personalized nutrition and fitness recommendations
+      - Map with colour-coded fill levels, waste type filters, search by name or ID, and a container panel loaded in a Turbo Frame
+      - Container panel with four tabs for timeline, sensors, deposits and incidents, plus a thirty-day fill graph
+      - Incident handling with status filters, resolve and reopen actions, note editing over Turbo Streams, and CSV export
+      - Five dashboards covering fill evolution, breakdown by waste type, monthly incidents, and the busiest and most problematic points
+      - Round planning with a fill threshold slider, OSRM routing on real roads, an animated route line and an ordered stop list with total distance
 
   - slug: nestio-bnb
     name: NestioBnb
@@ -91,11 +104,14 @@ featured:
     accent: cyan
     size: small
     teaser: >-
-      Accommodation rental platform with interactive map, a smooth booking system, and an AI
-      chatbot for personalized recommendations.
+      A rental platform built around the map. Listings filter as you pan, booking happens on
+      the listing page, and a chatbot suggests places from what you tell it you want.
     summary: >-
-      Airbnb-inspired accommodation rental application with interactive Mapbox map, complete
-      booking system, favorites management and AI chatbot for recommendations.
+      An Airbnb-style rental site where the map does most of the work. Listings filter in real
+      time as you move around, and you book straight from the listing page. Hosts manage their
+      properties and the requests coming in, guests keep a shortlist of favourites, and a
+      chatbot built on the OpenAI API suggests places to stay and things to do from a plain
+      description of what you are after. Images are stored on AWS S3.
     link:
       url: https://github.com/VictorHarri-Chal/NestioBnb
       label: View source code
@@ -110,29 +126,33 @@ featured:
       - { name: JavaScript, color: orange }
       - { name: Tailwind CSS, color: indigo }
     features:
-      - Interactive Mapbox map with real-time filters
-      - Complete accommodation booking system
-      - Favorites management and received requests
-      - AI chatbot for accommodation and place recommendations
-      - Image management with AWS S3
-      - Responsive interface with Hotwire
-      - Advanced search and filtering system
-      - User and owner profile management
+      - Mapbox map with filters that apply as you move around
+      - Booking handled from the listing page, with availability checks
+      - Favourites and incoming request management
+      - Chatbot suggesting stays and things to do from a plain description
+      - Image storage on AWS S3
+      - Search and filtering across the catalogue
+      - Separate profiles and dashboards for guests and hosts
 
   - slug: scandela
     name: Scandela
-    period: Sept 2023 – June 2025
+    period: Sept 2023 - June 2025
     datetime: "2025-06-01"
     accent: emerald
     size: small
     teaser: >-
-      Master's thesis: cartographic analysis platform for public lighting optimization. Helps
-      local authorities reduce electrical costs while ensuring safety.
+      My final year project. Local authorities can see every streetlight in Nantes on a map,
+      filter the network by what it costs to run, and test a change before committing to it.
+      I led the frontend and the product side.
     summary: >-
-      Master's thesis project: cartographic analysis and simulation software for public
-      lighting optimization. Interactive map platform helping local authorities reduce
-      electrical and environmental costs while ensuring safety through advanced filtering and
-      analysis tools.
+      Public lighting is expensive and most councils have very little visibility on what
+      theirs actually costs them. Scandela maps every streetlight in Nantes with its technical
+      detail, lets you filter the network on whichever criteria matter for the decision at
+      hand, and simulates the effect of a change before anyone commits to it. The point is to
+      cut electricity and carbon without creating dark corners. It shipped as a set rather
+      than a single app: a public site, the application itself, and a client server, with
+      Raspberry Pi hardware on the field side. I led the frontend and the product management
+      on the team.
     link:
       url: https://github.com/Team-Scandela/Scandela
       label: View source code
@@ -146,14 +166,13 @@ featured:
       - { name: PostgreSQL, color: purple }
       - { name: Mapbox, color: indigo }
     features:
-      - Interactive cartographic platform for public lighting analysis
-      - Complete streetlight mapping of Nantes city with detailed information
-      - Advanced filtering system for optimization analysis
-      - Cost optimization tools for electrical and environmental expenses
-      - Safety assessment and lighting quality analysis
-      - Complete solution with showcase website, application, and client server
-      - Raspberry Pi integration for hardware components
-      - Real-time data visualization and simulation capabilities
+      - Map of the full streetlight network with the technical detail behind each point
+      - Filters built for optimisation decisions rather than generic browsing
+      - Simulation of a change and its effect on cost and coverage before it is committed
+      - Cost analysis covering both electricity spend and carbon
+      - Safety and lighting quality assessment across an area
+      - Delivered as a public site, an application and a client server
+      - Raspberry Pi integration for the hardware side
 
 minor:
   - name: Area
