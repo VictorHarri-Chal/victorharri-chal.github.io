@@ -17,7 +17,7 @@ groups:
       - { name: Elasticsearch, icon: fa-solid fa-magnifying-glass, color: text-yellow-400 }
       - { name: RSpec, icon: fa-solid fa-vial-circle-check, color: text-green-400 }
       - { name: Tailwind, icon: fa-brands fa-css3-alt, color: text-cyan-400 }
-      - { name: Kamal, icon: fa-solid fa-ship, color: text-blue-400 }
+      - { name: Kamal, icon: fa-solid fa-cloud-arrow-up, color: text-blue-400 }
       - { name: Docker, icon: fa-brands fa-docker, color: text-blue-500 }
       - { name: Git, icon: fa-brands fa-git-alt, color: text-orange-500 }
 
