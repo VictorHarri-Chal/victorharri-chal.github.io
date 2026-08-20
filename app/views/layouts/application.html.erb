@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= page_title %></title>
     <meta name="description" content="<%= page_description %>">
@@ -49,9 +49,11 @@
               data-controller="navbar"
               data-navbar-target="navbar">
         <nav class="container mx-auto flex items-center justify-between px-5 h-16">
+          <% back_to_projects = controller_name == "projects" && action_name == "show" %>
           <%= link_to "←",
-              controller_name == 'projects' && action_name == 'show' ? projects_path : root_path,
-              class: "text-neutral-400 hover:text-white transition" %>
+              back_to_projects ? projects_path : root_path,
+              class: "text-neutral-400 hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
+              aria: { label: back_to_projects ? "Back to projects" : "Back to home" } %>
           <div class="flex items-center gap-6 text-sm">
             <%= link_to "About", about_path, class: "hover:text-white text-neutral-400 transition" %>
             <%= link_to "Experience", experience_path, class: "hover:text-white text-neutral-400 transition" %>

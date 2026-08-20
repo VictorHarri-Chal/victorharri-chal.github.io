@@ -4,6 +4,8 @@ export default class extends Controller {
   static targets = ["gradient"]
 
   connect() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
     this.bindMouseMove()
     // Ajouter une transition CSS pour créer l'effet de traînée
     this.gradientTarget.style.transition = "background 0.3s ease-out"

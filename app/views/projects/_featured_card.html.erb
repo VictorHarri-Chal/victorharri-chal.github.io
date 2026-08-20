@@ -1,28 +1,29 @@
 <% large = project.large? %>
-<div class="project-card project-card--<%= large ? "large" : "small" %> relative rounded-2xl bg-neutral-900/40 border <%= project_accent_classes(project) %> <%= large ? "p-12" : "p-8" %> hover:scale-[1.02] transition-all duration-300 overflow-hidden group cursor-pointer h-full <%= large ? "min-h-[600px]" : "flex flex-col" %>"
-     data-controller="gradient reveal project-card"
-     data-project-card-project-slug-value="<%= project.slug %>"
-     data-action="click->project-card#click"
-     role="button"
-     tabindex="0"
-     aria-label="View <%= project.name %> project">
+<%# The whole card is clickable through the stretched pseudo-element on the title
+    link, so it works with a mouse, a keyboard and a screen reader. The external
+    link sits above it on its own layer rather than nested inside it. %>
+<div class="project-card relative isolate rounded-2xl bg-neutral-900/40 border <%= project_accent_classes(project) %> <%= large ? "p-12" : "p-8" %> hover:scale-[1.02] transition-all duration-300 overflow-hidden group h-full <%= large ? "min-h-[600px]" : "flex flex-col" %>"
+     data-controller="gradient reveal">
 
-  <div class="project-gradient project-gradient--dynamic absolute inset-0 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
-  <div class="project-gradient project-gradient--static absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
+  <div class="absolute inset-0 -z-10 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
+  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
 
-  <div class="relative z-10 h-full flex flex-col">
+  <div class="h-full flex flex-col">
     <header class="flex justify-between items-start <%= large ? "mb-6" : "mb-4" %>">
       <time class="text-sm text-neutral-400 font-medium" datetime="<%= project.datetime %>"><%= project.period %></time>
       <a href="<%= project.link[:url] %>"
          target="_blank"
          rel="noopener noreferrer"
-         class="text-neutral-400 hover:text-white transition-colors duration-300"
+         class="relative z-10 text-neutral-400 hover:text-white transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
          aria-label="<%= project.link[:label] %> for <%= project.name %>">
         <i class="<%= project.link[:icon] %> <%= large ? "fa-xl" : "fa-lg" %>" aria-hidden="true"></i>
       </a>
     </header>
 
-    <h2 class="<%= large ? "text-4xl mb-6" : "text-2xl mb-3" %> font-semibold text-white"><%= project.name %></h2>
+    <h2 class="<%= large ? "text-4xl mb-6" : "text-2xl mb-3" %> font-semibold text-white">
+      <%= link_to project.name, project_path(project),
+          class: "after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" %>
+    </h2>
 
     <div class="<%= large ? "space-y-4 " : "" %>text-neutral-300 leading-relaxed flex-grow">
       <p class="<%= large ? "text-lg" : "text-sm" %>"><%= project.teaser %></p>
@@ -30,10 +31,10 @@
 
     <% if large %>
       <div class="mt-6">
-        <%= link_to project_path(project), class: "inline-flex items-center gap-2 text-white hover:text-neutral-300 transition-colors duration-300 font-medium" do %>
+        <span class="inline-flex items-center gap-2 text-white group-hover:text-neutral-300 transition-colors duration-300 font-medium">
           Read more
           <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
-        <% end %>
+        </span>
       </div>
     <% end %>
   </div>

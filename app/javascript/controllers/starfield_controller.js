@@ -4,6 +4,8 @@ export default class extends Controller {
   static targets = ["starfield"]
 
   connect() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
     this.bindMouseMove()
   }
 

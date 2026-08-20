@@ -5,6 +5,8 @@ export default class extends Controller {
   static values = { threshold: { type: Number, default: 0.1 }, class: String }
 
   connect() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
     this.element.classList.add("opacity-0", "translate-y-8", "transition-all", "duration-1000", "ease-out")
     this.observer = new IntersectionObserver(this.onIntersect.bind(this), {
       root: null,
