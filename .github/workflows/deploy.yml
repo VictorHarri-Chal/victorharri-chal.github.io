@@ -1,12 +1,12 @@
-name: Deploy to GitHub Pages
+name: Check, build and deploy
 
+# Runs on every branch so a push can be validated before it reaches main. Only
+# the deploy job is gated on main, so nothing gets published from a branch.
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 
-# Only the deploy job needs write access; the build job runs third-party code.
+# Only the deploy job needs write access; the others run third-party code.
 permissions:
   contents: read
 
@@ -14,17 +14,39 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-env:
-  RAILS_ENV: production
-  SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'dummy_secret_key_base_for_static_build' }}
-
 jobs:
-  build:
+  checks:
     runs-on: ubuntu-latest
-    # configure-pages reads the Pages settings; it never writes.
+    env:
+      RAILS_ENV: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Test
+        run: bundle exec rails test
+
+      - name: Lint
+        run: bundle exec rubocop
+
+      - name: Security scan
+        run: bundle exec brakeman --no-pager
+
+  build:
+    needs: checks
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       pages: read
+    env:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'dummy_secret_key_base_for_static_build' }}
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -56,7 +78,8 @@ jobs:
         with:
           path: "_site"
 
-  # Skipped on branches, so a manual run can validate the build without publishing.
+  # Skipped on branches, so a push can go through the checks and the build
+  # without publishing anything.
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: build
