@@ -48,6 +48,9 @@
   </head>
 
   <body class="min-h-dvh bg-neutral-950 text-white relative overflow-x-hidden <%= 'overflow-hidden' if current_page?(root_path) || current_page?(contact_path) %> font-outfit" data-controller="starfield">
+    <a href="#main"
+       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-white focus:outline-2 focus:outline-offset-2 focus:outline-white">Skip to content</a>
+
     <% unless current_page?(root_path) %>
       <header class="fixed top-0 inset-x-0 z-50 transition-transform duration-300"
               data-controller="navbar"
@@ -71,7 +74,7 @@
     <div aria-hidden="true" class="starfield" data-starfield-target="starfield"></div>
     <div aria-hidden="true" class="light-beam"></div>
 
-    <main class="container mx-auto px-5 <%= 'pt-0' if current_page?(root_path) %> <%= 'pt-32 pb-20' unless current_page?(root_path) %>">
+    <main id="main" class="container mx-auto px-5 <%= 'pt-0' if current_page?(root_path) %> <%= 'pt-32 pb-20' unless current_page?(root_path) %>">
       <%= yield %>
     </main>
   </body>

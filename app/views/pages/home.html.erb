@@ -1,12 +1,39 @@
+<% content_for :head do %>
+  <script type="application/ld+json">
+    <%= raw({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Victor Harri-Chal",
+      jobTitle: "Full-stack Ruby on Rails developer",
+      url: SeoHelper::SITE_URL,
+      image: "#{SeoHelper::SITE_URL}/og-image.png",
+      email: "victorharrichal@yahoo.com",
+      address: { "@type": "PostalAddress", addressLocality: "Nantes", addressCountry: "FR" },
+      sameAs: [
+        "https://github.com/VictorHarri-Chal",
+        "https://www.linkedin.com/in/victor-harri-chal/"
+      ],
+      alumniOf: [
+        { "@type": "CollegeOrUniversity", name: "Epitech", address: "Nantes, France" },
+        { "@type": "CollegeOrUniversity", name: "Dankook University", address: "Seoul, South Korea" }
+      ],
+      knowsAbout: [
+        "Ruby on Rails", "Hotwire", "ViewComponent", "PostgreSQL",
+        "Sidekiq", "Redis", "Elasticsearch", "Kamal", "Docker"
+      ]
+    }.to_json) %>
+  </script>
+<% end %>
+
 <section class="w-full h-screen flex items-center justify-center">
   <div class="text-center max-w-6xl mx-auto">
     <div data-controller="reveal">
-      <div class="flex justify-center gap-8 mb-12">
+      <nav class="flex justify-center gap-8 mb-12" aria-label="Main">
         <%= link_to "About", about_path, class: "text-neutral-400 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-103" %>
         <%= link_to "Experience", experience_path, class: "text-neutral-400 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-103" %>
         <%= link_to "Projects", projects_path, class: "text-neutral-400 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-103" %>
         <%= link_to "Contact", contact_path, class: "text-neutral-400 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-103" %>
-      </div>
+      </nav>
       <h1 class="text-[clamp(3rem,10vw,8rem)] font-bold leading-[0.9] tracking-tight">Victor Harri-Chal</h1>
       <p class="mt-6 text-neutral-400 text-lg leading-relaxed">Full-stack Ruby on Rails developer, trained at Epitech between Nantes and Seoul. Two years of production Rails since then, and a product of my own that I still run. Looking for what's next, remote by preference.</p>
     </div>
