@@ -141,8 +141,9 @@ education:
       I picked up enough Korean to get by, but the part that stayed with me was being taught
       differently: another pedagogy, other expectations, other assumptions about what a
       developer should already know. Korea is as current as anywhere on technology and looks
-      at it from a completely different angle. I studied art, Flutter and Java while I was
-      there.
+      at it from a completely different angle. I studied Dart, Flutter and Java while I
+      was there.
     technologies:
-      - { name: Flutter, color: cyan }
+      - { name: Dart, color: cyan }
+      - { name: Flutter, color: blue }
       - { name: Java, color: red }
