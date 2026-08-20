@@ -5,7 +5,7 @@
 <div class="project-card relative isolate rounded-2xl bg-neutral-900/40 border <%= project_accent_classes(project) %> <%= large ? "p-12" : "p-8" %> hover:scale-[1.02] transition-all duration-300 overflow-hidden group h-full <%= large ? "min-h-[600px]" : "flex flex-col" %>"
      data-controller="gradient reveal">
 
-  <div class="absolute inset-0 -z-10 bg-gradient-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
+  <div class="absolute inset-0 -z-10 bg-radial from-white/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
   <div class="absolute inset-0 -z-10 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
 
   <div class="h-full flex flex-col">
@@ -16,7 +16,7 @@
          rel="noopener noreferrer"
          class="relative z-10 text-neutral-400 hover:text-white transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
          aria-label="<%= project.link[:label] %> for <%= project.name %>">
-        <i class="<%= project.link[:icon] %> <%= large ? "fa-xl" : "fa-lg" %>" aria-hidden="true"></i>
+        <%= icon(project.link[:icon], css: large ? "text-2xl" : "text-xl") %>
       </a>
     </header>
 
@@ -33,7 +33,7 @@
       <div class="mt-6">
         <span class="inline-flex items-center gap-2 text-white group-hover:text-neutral-300 transition-colors duration-300 font-medium">
           Read more
-          <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+          <%= icon("arrow-right", css: "text-sm") %>
         </span>
       </div>
     <% end %>

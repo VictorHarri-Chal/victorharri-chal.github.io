@@ -8,7 +8,7 @@
 # size    : `large` gets the full-height card, `small` the stacked ones
 # teaser  : short copy shown on the card
 # summary : longer copy shown at the top of the detail page
-# link    : url + label + icon (full Font Awesome classes, e.g. "fa-solid fa-link"
+# link    : url + label + icon (an icon name from config/icons.yml, e.g. "link"
 #           for a live site rather than a source repository)
 
 featured:
@@ -43,7 +43,7 @@ featured:
     link:
       url: https://nutriflow.in/
       label: Visit the site
-      icon: fa-solid fa-arrow-up-right-from-square
+      icon: arrow-up-right-from-square
     technologies:
       - { name: Ruby on Rails 8, color: red }
       - { name: PostgreSQL, color: green }
@@ -89,7 +89,7 @@ featured:
     link:
       url: https://github.com/VictorHarri-Chal/Vigie
       label: View source code
-      icon: fa-brands fa-github
+      icon: github
     technologies:
       - { name: Ruby on Rails 8, color: red }
       - { name: PostgreSQL / jsonb, color: blue }
@@ -128,7 +128,7 @@ featured:
     link:
       url: https://github.com/VictorHarri-Chal/NestioBnb
       label: View source code
-      icon: fa-brands fa-github
+      icon: github
     technologies:
       - { name: Ruby on Rails, color: red }
       - { name: Hotwire, color: blue }
@@ -172,7 +172,7 @@ featured:
     link:
       url: https://github.com/Team-Scandela/Scandela
       label: View source code
-      icon: fa-brands fa-github
+      icon: github
     technologies:
       - { name: React, color: blue }
       - { name: Java Spring Boot, color: green }

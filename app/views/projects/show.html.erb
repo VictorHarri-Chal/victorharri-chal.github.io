@@ -21,7 +21,7 @@
       <ul class="space-y-2 text-neutral-300">
         <% @project.features.each do |feature| %>
           <li class="flex items-start gap-2">
-            <i class="fa-solid fa-check text-green-400 mt-1" aria-hidden="true"></i>
+            <%= icon("check", css: "text-green-400 mt-1") %>
             <span><%= feature %></span>
           </li>
         <% end %>
@@ -35,7 +35,7 @@
            target="_blank"
            rel="noopener noreferrer"
            class="flex items-center gap-2 text-neutral-300 hover:text-white transition-colors duration-300">
-          <i class="<%= @project.link[:icon] %> fa-lg" aria-hidden="true"></i>
+          <%= icon(@project.link[:icon], css: "text-xl") %>
           <span><%= @project.link[:label] %></span>
         </a>
       </div>

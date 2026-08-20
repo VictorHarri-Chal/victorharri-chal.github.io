@@ -27,7 +27,7 @@
     <div class="mt-6">
       <%= link_to entry.link[:url], class: "inline-flex items-center gap-2 text-white hover:text-neutral-300 transition-colors duration-300 font-medium text-sm" do %>
         <%= entry.link[:label] %>
-        <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+        <%= icon("arrow-right", css: "text-xs") %>
       <% end %>
     </div>
   <% end %>
