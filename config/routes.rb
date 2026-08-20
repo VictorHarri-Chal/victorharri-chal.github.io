@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/experience", to: "pages#experience"
   get "/contact", to: "pages#contact"
+  # Not /404: ActionDispatch::Static would serve public/404.html for that path
+  # before the router ever sees it. The build writes this page to _site/404.html.
+  get "/not-found", to: "pages#not_found"
 
   resources :projects, only: %i[index show]
 end

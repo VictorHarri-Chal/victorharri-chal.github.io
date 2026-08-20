@@ -16,6 +16,7 @@
 # keep the URLs the site published previously working.
 
 require "fileutils"
+require "set"
 require "net/http"
 require "uri"
 require "yaml"
@@ -25,7 +26,7 @@ OUTPUT = File.join(ROOT, "_site")
 HOST = ENV.fetch("STATIC_HOST", "http://127.0.0.1:3000")
 EXCEPTION_MARKER = "Action Controller: Exception"
 SITE_URL = "https://victorharri-chal.github.io"
-COPIED_FILES = %w[404.html icon.svg icon.png og-image.png robots.txt CV_Victor_Harri-Chal.pdf].freeze
+COPIED_FILES = %w[icon.svg icon.png og-image.png robots.txt CV_Victor_Harri-Chal.pdf].freeze
 
 def project_slugs
   YAML.load_file(File.join(ROOT, "config", "projects.yml"))
@@ -81,6 +82,31 @@ def write_sitemap(paths)
   XML
 end
 
+# assets:precompile also builds everything the gems ship, including rails-ujs
+# and the unminified copies of Turbo and Stimulus, none of which the importmap
+# ever asks for. Publishing them wastes close to a megabyte, so anything the
+# built pages and stylesheets do not reference is dropped. Source maps are kept
+# for the files that are referenced.
+def prune_unused_assets
+  assets = File.join(OUTPUT, "assets")
+  return unless Dir.exist?(assets)
+
+  referenced = Dir.glob(File.join(OUTPUT, "**", "*.{html,css}")).flat_map do |file|
+    File.read(file).scan(%r{/assets/([^"')\s]+)})
+  end.flatten.to_set
+
+  Dir.glob(File.join(assets, "**", "*")).each do |path|
+    next unless File.file?(path)
+
+    name = path.delete_prefix("#{assets}/")
+    next if referenced.include?(name)
+    next if name.end_with?(".map") && referenced.include?(name.delete_suffix(".map"))
+    next if File.basename(name) == ".manifest.json"
+
+    File.delete(path)
+  end
+end
+
 def copy_static_files
   assets = File.join(ROOT, "public", "assets")
   FileUtils.cp_r(assets, OUTPUT) if Dir.exist?(assets)
@@ -105,8 +131,13 @@ pages.each do |path|
   puts format("  %-26s %6d bytes", path, body.bytesize)
 end
 
+# GitHub Pages serves this for any unknown URL, so it is written flat rather
+# than as a directory index.
+File.write(File.join(OUTPUT, "404.html"), fetch("/not-found"))
+
 copy_static_files
 write_sitemap(pages)
+prune_unused_assets
 
 written = Dir.glob(File.join(OUTPUT, "**", "*.html")).size
 puts "\n✓ #{pages.size} pages rendered, #{written} HTML files written to _site/"
