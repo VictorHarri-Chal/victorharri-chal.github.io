@@ -1,0 +1,21 @@
+<% content_for :title, "Page not found" %>
+<% content_for :description, "That page does not exist. Head back to the portfolio." %>
+<% content_for :head do %><meta name="robots" content="noindex"><% end %>
+
+<section class="w-full">
+  <h1 class="sr-only">Page not found</h1>
+
+  <div class="max-w-2xl mx-auto pt-24 text-center">
+    <p class="text-[clamp(4rem,12vw,8rem)] font-bold leading-none tracking-tight text-white">404</p>
+    <p class="mt-6 text-lg text-neutral-400 leading-relaxed">
+      That page does not exist. It may have moved, or the link that brought you here was wrong.
+    </p>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-6 text-sm">
+      <%= link_to "Home", root_path, class: "text-white hover:text-neutral-300 transition-colors duration-300 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" %>
+      <%= link_to "Projects", projects_path, class: "text-neutral-400 hover:text-white transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" %>
+      <%= link_to "Experience", experience_path, class: "text-neutral-400 hover:text-white transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" %>
+      <%= link_to "Contact", contact_path, class: "text-neutral-400 hover:text-white transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" %>
+    </div>
+  </div>
+</section>

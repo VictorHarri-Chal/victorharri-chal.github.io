@@ -9,6 +9,26 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+/* Outfit, self-hosted. One variable file per subset covers every weight, so
+   there is no third-party font request and no external origin left. */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("outfit-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("outfit-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 /* Typography - Outfit font family */
 .font-outfit {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -82,6 +102,9 @@
     radial-gradient(1.5px 1.5px at 98% 85%, rgba(255,255,255,0.7) 50%, transparent 51%);
   filter: blur(0px);
   transition: transform 0.3s ease-out;
+  /* Promotes the layer so the parallax composites instead of repainting
+     59 stacked gradients on every frame. */
+  will-change: transform;
 }
 
 /* Light beam effect */
@@ -100,4 +123,63 @@
   z-index: 1;
   pointer-events: none;
   transform: translateX(-50%) skewX(45deg);
+}
+
+/* Respect the operating system setting for reduced motion. The !important is
+   deliberate: the starfield and gradient controllers write inline styles, and a
+   plain rule would lose to them. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .starfield {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Reveal on scroll. The hidden state lives here rather than being added by the
+   controller, otherwise the browser paints the content, the controller hides it
+   and it fades back in: a visible flicker on every load.
+
+   This uses an animation, not a transition, on purpose. A `transition` here
+   would win on specificity over the element's own transition utility and
+   replace the list of animated properties, which silently broke the hover on
+   every card: Tailwind v4 zooms through `scale`, and `scale` was no longer in
+   the list. Same reason the keyframes move `translate` rather than `transform`,
+   so nothing collides with a transform utility. */
+.js [data-controller~="reveal"] {
+  opacity: 0;
+}
+
+.js [data-controller~="reveal"].is-revealed {
+  animation: reveal 1s ease-out both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 2rem;
+  }
+
+  to {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-controller~="reveal"] {
+    opacity: 1;
+  }
+
+  .js [data-controller~="reveal"].is-revealed {
+    animation: none;
+  }
 }

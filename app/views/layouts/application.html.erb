@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= content_for(:title) || "Victor Harri-Chal" %></title>
+    <meta charset="utf-8">
+    <%# Lets the CSS hide the reveal blocks up front when JS is available, so the
+        content is not painted, hidden and faded back in. Without JS the class is
+        never added and everything stays visible. %>
+    <script>document.documentElement.classList.add("js")</script>
+    <title><%= page_title %></title>
+    <meta name="description" content="<%= page_description %>">
+    <link rel="canonical" href="<%= canonical_url %>">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Victor Harri-Chal">
+    <meta property="og:title" content="<%= page_title %>">
+    <meta property="og:description" content="<%= page_description %>">
+    <meta property="og:url" content="<%= canonical_url %>">
+    <meta property="og:image" content="<%= og_image_url %>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Victor Harri-Chal, full-stack Ruby on Rails developer">
+    <meta name="twitter:card" content="summary_large_image">
+    <%# No third-party resource is loaded any more, so everything is locked to
+        'self'. The two 'unsafe-inline' are for the importmap script tag and the
+        inline styles the Stimulus controllers write; a static site cannot issue
+        a nonce, and with no form and no reflected parameter there is nothing to
+        inject through. frame-ancestors is omitted because <meta> ignores it. %>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= yield :head %>
 
@@ -17,13 +40,7 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png" sizes="180x180">
 
-    <!-- Google Fonts - Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preload" href="<%= asset_path("outfit-latin.woff2") %>" as="font" type="font/woff2" crossorigin>
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -31,16 +48,22 @@
   </head>
 
   <body class="min-h-dvh bg-neutral-950 text-white relative overflow-x-hidden <%= 'overflow-hidden' if current_page?(root_path) || current_page?(contact_path) %> font-outfit" data-controller="starfield">
+    <a href="#main"
+       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-white focus:outline-2 focus:outline-offset-2 focus:outline-white">Skip to content</a>
+
     <% unless current_page?(root_path) %>
-      <header class="fixed top-0 inset-x-0 z-50 transition-transform duration-300 %>"
+      <header class="fixed top-0 inset-x-0 z-50 transition-transform duration-300"
               data-controller="navbar"
               data-navbar-target="navbar">
         <nav class="container mx-auto flex items-center justify-between px-5 h-16">
+          <% back_to_projects = controller_name == "projects" && action_name == "show" %>
           <%= link_to "←",
-              controller_name == 'projects' && action_name == 'show' ? projects_path : root_path,
-              class: "text-neutral-400 hover:text-white transition" %>
+              back_to_projects ? projects_path : root_path,
+              class: "text-neutral-400 hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
+              aria: { label: back_to_projects ? "Back to projects" : "Back to home" } %>
           <div class="flex items-center gap-6 text-sm">
             <%= link_to "About", about_path, class: "hover:text-white text-neutral-400 transition" %>
+            <%= link_to "Experience", experience_path, class: "hover:text-white text-neutral-400 transition" %>
             <%= link_to "Projects", projects_path, class: "hover:text-white text-neutral-400 transition" %>
             <%= link_to "Contact", contact_path, class: "hover:text-white text-neutral-400 transition" %>
           </div>
@@ -51,7 +74,7 @@
     <div aria-hidden="true" class="starfield" data-starfield-target="starfield"></div>
     <div aria-hidden="true" class="light-beam"></div>
 
-    <main class="container mx-auto px-5 <%= 'pt-0' if current_page?(root_path) %> <%= 'pt-32 pb-20' unless current_page?(root_path) %>">
+    <main id="main" class="container mx-auto px-5 <%= 'pt-0' if current_page?(root_path) %> <%= 'pt-32 pb-20' unless current_page?(root_path) %>">
       <%= yield %>
     </main>
   </body>

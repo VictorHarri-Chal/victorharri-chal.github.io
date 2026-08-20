@@ -1,213 +1,96 @@
-name: Deploy to GitHub Pages
+name: Check, build and deploy
 
+# Runs on every branch so a push can be validated before it reaches main. Only
+# the deploy job is gated on main, so nothing gets published from a branch.
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 
+# Only the deploy job needs write access; the others run third-party code.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  build:
+  checks:
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1
         with:
-          ruby-version: '3.2'
-          bundler-cache: false
+          ruby-version: .ruby-version
+          bundler-cache: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Test
+        run: bundle exec rails test
+
+      - name: Lint
+        run: bundle exec rubocop
+
+      - name: Security scan
+        run: bundle exec brakeman --no-pager
+
+  build:
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    env:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'dummy_secret_key_base_for_static_build' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1
         with:
-          node-version: '18'
-
-      - name: Install system deps (sqlite, pkg-config)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y curl sqlite3 libsqlite3-dev pkg-config
-
-      - name: Update lockfile for sqlite3
-        run: |
-          bundle lock --update sqlite3
-
-      - name: Install gems (update sqlite3)
-        run: |
-          bundle config set deployment false
-          bundle config set frozen false
-          bundle update sqlite3
-          bundle install --jobs 4 --retry 3
-
-      - name: Configure database for static generation (SQLite, single DB)
-        run: |
-          cat > config/database.yml << 'EOF'
-          default: &default
-            adapter: sqlite3
-            pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-            timeout: 5000
-
-          development:
-            <<: *default
-            database: db/development.sqlite3
-
-          test:
-            <<: *default
-            database: db/test.sqlite3
-
-          production: &production
-            <<: *default
-            database: db/production.sqlite3
-
-          queue:
-            <<: *production
-
-          cache:
-            <<: *production
-
-          cable:
-            <<: *production
-          EOF
-
-      - name: Setup database
-        env:
-          RAILS_ENV: production
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'dummy_secret_key_base_for_build_' }}
-        run: |
-          RAILS_ENV=production bundle exec rails db:create || true
-          RAILS_ENV=production bundle exec rails db:migrate || true
+          ruby-version: .ruby-version
+          bundler-cache: true
 
       - name: Precompile assets
-        env:
-          RAILS_ENV: production
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'dummy_secret_key_base_for_build_' }}
-        run: |
-          RAILS_ENV=production bundle exec rails assets:precompile
+        run: bundle exec rails assets:precompile
 
       - name: Build static site
-        env:
-          RAILS_ENV: production
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'dummy_secret_key_base_for_build_' }}
-          PORT: 3000
         run: |
-          bundle exec rails server -e production -p 3000 -b 0.0.0.0 > /tmp/rails.log 2>&1 &
-          RAILS_PID=$!
-
-          echo "Waiting for Rails server to start..."
-          for i in {1..30}; do
-            if curl -s http://localhost:3000/up > /dev/null 2>&1; then
-              echo "Rails server is ready!"
-              break
-            fi
-            if [ $i -eq 30 ]; then
-              echo "Server failed to start. Logs:"
-              cat /tmp/rails.log
-              exit 1
-            fi
-            sleep 2
-          done
-
-          mkdir -p _site
-
-          echo "Downloading pages..."
-          curl -sL http://localhost:3000/ -o _site/index.html
-          curl -sL http://localhost:3000/about -o _site/about.html
-          curl -sL http://localhost:3000/contact -o _site/contact.html
-          curl -sL http://localhost:3000/projects -o _site/projects.html
-          
-          mkdir -p _site/projects
-          curl -sL http://localhost:3000/projects/vigie -o _site/projects/vigie.html
-          curl -sL http://localhost:3000/projects/nutri-flow -o _site/projects/nutri-flow.html
-          curl -sL http://localhost:3000/projects/nestio-bnb -o _site/projects/nestio-bnb.html
-          curl -sL http://localhost:3000/projects/scandela -o _site/projects/scandela.html
-
-          for file in _site/*.html; do
-            if [ ! -s "$file" ] || grep -q "Action Controller: Exception" "$file"; then
-              echo "Error: $file is empty or contains an error page"
-              head -50 "$file" || true
-              exit 1
-            fi
-            echo "✓ $(basename $file) downloaded ($(wc -c < "$file") bytes)"
-          done
-
-          kill $RAILS_PID 2>/dev/null || true
-          sleep 2
-          pkill -f 'rails server' || true
-
-          echo "Copying assets..."
-          cp -r public/assets _site/assets 2>/dev/null || true
-          cp -r public/*.svg _site/ 2>/dev/null || true
-          cp -r public/*.pdf _site/ 2>/dev/null || true
-          cp -r public/*.txt _site/ 2>/dev/null || true
-
-          echo "Fixing links in HTML files..."
-          find _site -name "*.html" -type f -exec sed -i 's|http://localhost:3000/||g' {} \;
-          
-          # Fix links in root HTML files (./assets/)
-          find _site -maxdepth 1 -name "*.html" -type f -exec sed -i 's|href="/|href="./|g' {} \;
-          find _site -maxdepth 1 -name "*.html" -type f -exec sed -i 's|src="/|src="./|g' {} \;
-          find _site -maxdepth 1 -name "*.html" -type f -exec sed -i 's|action="/|action="./|g' {} \;
-          find _site -maxdepth 1 -name "*.html" -type f -exec sed -i 's|"\/assets/|"./assets/|g' {} \;
-          
-          # Fix links in project HTML files (../assets/ since they're in a subdirectory)
-          find _site/projects -name "*.html" -type f -exec sed -i 's|href="/|href="../|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|src="/|src="../|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|action="/|action="../|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|"\/assets/|"../assets/|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|href="\.\/assets/|href="../assets/|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|src="\.\/assets/|src="../assets/|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|href="/icon\.|href="../icon.|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|src="/icon\.|src="../icon.|g' {} \;
-          
-          # Fix navigation links in project pages to point to root pages
-          find _site/projects -name "*.html" -type f -exec sed -i 's|href="\.\.\/about"|href="../about.html"|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|href="\.\.\/contact"|href="../contact.html"|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|href="\.\.\/projects"|href="../projects.html"|g' {} \;
-          find _site/projects -name "*.html" -type f -exec sed -i 's|href="\.\.\/"|href="../index.html"|g' {} \;
-          
-          # Fix project links to point to .html files for GitHub Pages
-          find _site -name "*.html" -type f -exec sed -i 's|href="\.\/projects\/vigie"|href="./projects/vigie.html"|g' {} \;
-          find _site -name "*.html" -type f -exec sed -i 's|href="\.\/projects\/nutri-flow"|href="./projects/nutri-flow.html"|g' {} \;
-          find _site -name "*.html" -type f -exec sed -i 's|href="\.\/projects\/nestio-bnb"|href="./projects/nestio-bnb.html"|g' {} \;
-          find _site -name "*.html" -type f -exec sed -i 's|href="\.\/projects\/scandela"|href="./projects/scandela.html"|g' {} \;
-          find _site -name "*.html" -type f -exec sed -i 's|href="\.\.\/projects\/vigie"|href="../projects/vigie.html"|g' {} \;
-          find _site -name "*.html" -type f -exec sed -i 's|href="\.\.\/projects\/nutri-flow"|href="../projects/nutri-flow.html"|g' {} \;
-          find _site -name "*.html" -type f -exec sed -i 's|href="\.\.\/projects\/nestio-bnb"|href="../projects/nestio-bnb.html"|g' {} \;
-          find _site -name "*.html" -type f -exec sed -i 's|href="\.\.\/projects\/scandela"|href="../projects/scandela.html"|g' {} \;
-          
-          # Fix JavaScript navigation links
-          find _site -name "*.html" -type f -exec sed -i 's|window\.location\.href = "/projects/|window.location.href = "./projects/|g' {} \;
-          find _site -name "*.js" -type f -exec sed -i 's|window\.location\.href = "/projects/|window.location.href = "./projects/|g' {} \;
-
-          touch _site/.nojekyll
-          echo "Static site built successfully!"
+          bundle exec rails server -e production -p 3000 -b 127.0.0.1 > /tmp/rails.log 2>&1 &
+          bundle exec ruby script/build_static.rb || {
+            echo "::group::Rails server log"
+            cat /tmp/rails.log
+            echo "::endgroup::"
+            exit 1
+          }
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: "_site"
 
+  # Skipped on branches, so a push can go through the checks and the build
+  # without publishing anything.
   deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

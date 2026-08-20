@@ -4,34 +4,35 @@ export default class extends Controller {
   static targets = ["gradient"]
 
   connect() {
-    this.bindMouseMove()
-    // Ajouter une transition CSS pour créer l'effet de traînée
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
     this.gradientTarget.style.transition = "background 0.3s ease-out"
+    this.onMouseMove = this.onMouseMove.bind(this)
+    this.element.addEventListener("mousemove", this.onMouseMove, { passive: true })
   }
 
   disconnect() {
-    this.unbindMouseMove()
+    this.element.removeEventListener("mousemove", this.onMouseMove)
+    if (this.frame) cancelAnimationFrame(this.frame)
   }
 
-  bindMouseMove() {
-    this.handleMouseMove = this.handleMouseMove.bind(this)
-    this.element.addEventListener('mousemove', this.handleMouseMove)
+  onMouseMove(event) {
+    this.pointer = { x: event.clientX, y: event.clientY }
+    this.frame ||= requestAnimationFrame(() => {
+      this.frame = null
+      this.paint()
+    })
   }
 
-  unbindMouseMove() {
-    this.element.removeEventListener('mousemove', this.handleMouseMove)
-  }
-
-  handleMouseMove(event) {
+  // The element is measured once per frame rather than once per event, which is
+  // what made this a forced synchronous layout on every pointer move.
+  paint() {
     const rect = this.element.getBoundingClientRect()
-    const x = event.clientX - rect.left
-    const y = event.clientY - rect.top
+    const x = ((this.pointer.x - rect.left) / rect.width) * 100
+    const y = ((this.pointer.y - rect.top) / rect.height) * 100
 
-    // Calculer la position relative (0 à 1)
-    const xPercent = (x / rect.width) * 100
-    const yPercent = (y / rect.height) * 100
-
-    // Combiner le gradient radial de base avec l'effet de souris
-    this.gradientTarget.style.background = `radial-gradient(circle at ${xPercent}% ${yPercent}%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 30%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%)`
+    this.gradientTarget.style.background =
+      `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 30%, transparent 70%), ` +
+      "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%)"
   }
 }

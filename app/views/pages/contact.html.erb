@@ -1,11 +1,16 @@
+<% content_for :title, "Contact" %>
+<% content_for :description, "Get in touch on LinkedIn or by email, browse my code on GitHub, or read my CV." %>
+
 <section class="w-full">
-  <div class="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
+  <h1 class="sr-only">Contact</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
     <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/victor-harri-chal/" target="_blank" class="relative rounded-2xl bg-neutral-900/30 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-12 text-center hover:scale-[1.02] hover:border-white/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 overflow-hidden group" data-controller="gradient reveal">
-      <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
+    <a href="https://www.linkedin.com/in/victor-harri-chal/" target="_blank" class="relative rounded-2xl bg-neutral-900/30 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-8 md:p-12 text-center hover:scale-[1.02] hover:border-white/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 overflow-hidden group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" data-controller="gradient reveal">
+      <div class="absolute inset-0 bg-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
       <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
       <div class="relative z-10 flex flex-col items-center">
-        <div class="text-4xl mb-4"><i class="fa-brands fa-linkedin"></i></div>
+        <div class="text-4xl mb-4"><%= icon("linkedin") %></div>
         <div class="w-px h-8 bg-white/20 mb-4"></div>
         <div class="text-lg font-medium mb-1">@victor-harri-chal</div>
         <div class="text-sm text-neutral-400">LinkedIn</div>
@@ -13,11 +18,11 @@
     </a>
 
     <!-- Email -->
-    <a href="mailto:victorharrichal@yahoo.com" class="relative rounded-2xl bg-neutral-900/30 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-12 text-center hover:scale-[1.02] hover:border-white/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 overflow-hidden group" data-controller="gradient reveal">
-      <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
+    <a href="mailto:victorharrichal@yahoo.com" class="relative rounded-2xl bg-neutral-900/30 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-8 md:p-12 text-center hover:scale-[1.02] hover:border-white/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 overflow-hidden group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" data-controller="gradient reveal">
+      <div class="absolute inset-0 bg-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
       <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
       <div class="relative z-10 flex flex-col items-center">
-        <div class="text-4xl mb-4"><i class="fa-solid fa-envelope"></i></div>
+        <div class="text-4xl mb-4"><%= icon("envelope") %></div>
         <div class="w-px h-8 bg-white/20 mb-4"></div>
         <div class="text-lg font-medium mb-1">victorharrichal@yahoo.com</div>
         <div class="text-sm text-neutral-400">Email</div>
@@ -25,11 +30,11 @@
     </a>
 
     <!-- Github -->
-    <a href="https://github.com/VictorHarri-Chal" target="_blank" class="relative rounded-2xl bg-neutral-900/30 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-12 text-center hover:scale-[1.02] hover:border-white/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 overflow-hidden group" data-controller="gradient reveal">
-      <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
+    <a href="https://github.com/VictorHarri-Chal" target="_blank" class="relative rounded-2xl bg-neutral-900/30 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-8 md:p-12 text-center hover:scale-[1.02] hover:border-white/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 overflow-hidden group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" data-controller="gradient reveal">
+      <div class="absolute inset-0 bg-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
       <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
       <div class="relative z-10 flex flex-col items-center">
-        <div class="text-4xl mb-4"><i class="fa-brands fa-github"></i></div>
+        <div class="text-4xl mb-4"><%= icon("github") %></div>
         <div class="w-px h-8 bg-white/20 mb-4"></div>
         <div class="text-lg font-medium mb-1">@VictorHarri-Chal</div>
         <div class="text-sm text-neutral-400">Github</div>
@@ -37,11 +42,11 @@
     </a>
 
     <!-- CV -->
-    <a href="/CV_Victor_Harri-Chal.pdf" target="_blank" class="relative rounded-2xl bg-neutral-900/30 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-12 text-center hover:scale-[1.02] hover:border-white/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 overflow-hidden group" data-controller="gradient reveal">
-      <div class="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
+    <a href="/CV_Victor_Harri-Chal.pdf" target="_blank" class="relative rounded-2xl bg-neutral-900/30 border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] p-8 md:p-12 text-center hover:scale-[1.02] hover:border-white/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 overflow-hidden group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" data-controller="gradient reveal">
+      <div class="absolute inset-0 bg-radial from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" data-gradient-target="gradient"></div>
       <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
       <div class="relative z-10 flex flex-col items-center">
-        <div class="text-4xl mb-4"><i class="fa-solid fa-file-pdf"></i></div>
+        <div class="text-4xl mb-4"><%= icon("file-pdf") %></div>
         <div class="w-px h-8 bg-white/20 mb-4"></div>
         <div class="text-lg font-medium mb-1">View my CV</div>
         <div class="text-sm text-neutral-400">CV Victor Harri-Chal</div>

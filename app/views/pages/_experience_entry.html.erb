@@ -1,0 +1,34 @@
+<%= render layout: "shared/panel", locals: { padding: "p-8" } do %>
+  <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-2">
+    <h3 class="text-xl font-semibold text-white"><%= entry.role %></h3>
+    <time class="text-sm text-neutral-400 font-medium"><%= entry.period %></time>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-neutral-400 mb-4">
+    <span class="text-neutral-300 font-medium"><%= entry.company %></span>
+    <span aria-hidden="true">&middot;</span>
+    <span><%= entry.location %></span>
+    <% if entry.badge %>
+      <span class="px-2 py-1 rounded-full bg-white/5 border border-white/10 text-xs"><%= entry.badge %></span>
+    <% end %>
+  </div>
+
+  <p class="text-neutral-300 leading-relaxed"><%= entry.description %></p>
+
+  <% if entry.technologies.any? %>
+    <div class="flex flex-wrap gap-2 mt-6">
+      <% entry.technologies.each do |technology| %>
+        <span class="px-3 py-1 <%= technology_classes(technology) %> rounded-full text-sm"><%= technology[:name] %></span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if entry.link %>
+    <div class="mt-6">
+      <%= link_to entry.link[:url], class: "inline-flex items-center gap-2 text-white hover:text-neutral-300 transition-colors duration-300 font-medium text-sm" do %>
+        <%= entry.link[:label] %>
+        <%= icon("arrow-right", css: "text-xs") %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

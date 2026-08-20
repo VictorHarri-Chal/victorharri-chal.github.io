@@ -1,0 +1,149 @@
+# Single source of truth for the experience page.
+#
+# Entries are listed newest first and rendered in that order.
+#
+# badge : short label shown next to the role, giving the nature of the position
+# link  : optional, points at the project page when one exists
+
+experience:
+  - company: Publidata
+    role: Full-stack developer
+    location: Remote
+    period: January 2026 - August 2026
+    badge: Permanent contract
+    description: >-
+      Publidata makes software for French local authorities. I worked on the dashboard their
+      partner cities use to run waste collection, shipping features and fixing bugs across a
+      Rails monolith. The role came with a lot of room. It was fully remote and they trusted
+      me to own my scope from one end to the other, so I decided how to approach the work and
+      kept the team with me as I went. That autonomy is what I got the most out of, and it is
+      where I built AI properly into the way I work rather than using it on the side.
+    technologies:
+      - { name: Ruby on Rails, color: red }
+      - { name: PostgreSQL, color: blue }
+      - { name: MongoDB, color: green }
+      - { name: Sidekiq, color: orange }
+      - { name: Redis, color: red }
+      - { name: Elasticsearch, color: yellow }
+
+  - company: NutriFlow
+    role: Solo developer
+    location: Personal product
+    period: July 2025 - present
+    badge: Side project
+    description: >-
+      A product I own from end to end. I built NutriFlow after four years of lifting and a
+      dozen apps that each solved part of the problem, and it now runs in production with
+      real users on it. The schema, the features, the deploys and every product call are
+      mine, which is a different kind of work from picking up a ticket and a useful
+      counterweight to it.
+    technologies:
+      - { name: Ruby on Rails 8, color: red }
+      - { name: PostgreSQL, color: blue }
+      - { name: Hotwire, color: cyan }
+      - { name: ViewComponent, color: purple }
+      - { name: Kamal, color: orange }
+      - { name: Docker, color: blue-dark }
+
+  - company: Kuartz
+    role: Full-stack developer
+    location: Nantes
+    period: September 2024 - September 2025
+    badge: Apprenticeship, then fixed-term
+    description: >-
+      A multi-tenant Rails monolith, front and back in one application, serving several
+      clients from a single codebase with modules enabled per customer. Much of the interface
+      was data tables, and the team kept the app close to the current Rails release. I spent
+      the year on real tickets: features, bug fixes and improvements across the platform.
+      This is where I learned Rails, alongside mentors trained at Le Wagon who took the time
+      to bring me up properly. I also brought in a friend as product owner, which gave me my
+      first experience of shipping next to someone on the product side. Doing all of it in
+      parallel with my degree taught me as much about working inside a company as about Ruby.
+    technologies:
+      - { name: Ruby on Rails, color: red }
+      - { name: Hotwire, color: cyan }
+      - { name: Sidekiq, color: orange }
+      - { name: ViewComponent, color: purple }
+      - { name: RSpec, color: green }
+
+  - company: Dvine
+    role: Frontend developer
+    location: Nantes
+    period: April 2023 - August 2023
+    badge: Internship
+    description: >-
+      Front-end work on an internal analytics dashboard, in Angular and TypeScript. Angular is
+      the second most used JavaScript framework after React and it works nothing like it, so
+      the learning curve was most of the value. I picked up the basics of Java alongside it.
+      A friend brought me into the company and we ended up on the same team, which made it my
+      first real experience of building something with someone rather than next to them. It
+      was also my first look inside an organization of that size.
+    technologies:
+      - { name: Angular, color: red }
+      - { name: TypeScript, color: blue }
+      - { name: Java, color: orange }
+
+  - company: Devfest Nantes
+    role: Speaker and volunteer
+    location: Nantes
+    period: October 2022
+    badge: Event
+    description: >-
+      I pitched an early version of my final year project at the Cité des Congrès, in front of
+      several hundred people. The idea was to digitize the way the animal rendering industry
+      in France handles its communications, which is less glamorous than it sounds and
+      genuinely unsolved. The project itself never went anywhere in the end. I volunteered
+      across the rest of the weekend. I like being on a stage and arguing for an idea in front
+      of a room, and this was the first time I got to do either.
+    technologies: []
+
+  - company: Easilys
+    role: Data engineer
+    location: Nantes
+    period: September 2022 - December 2022
+    badge: Internship
+    description: >-
+      My first time inside a company. I built automated statistical tooling with Ansible, and
+      picked up SQL and Python along the way. What stuck was less technical than that: seeing
+      how work actually gets planned, and what agile looks like when it is not a slide.
+    technologies:
+      - { name: Ansible, color: red }
+      - { name: Python, color: blue }
+      - { name: SQL, color: indigo }
+
+education:
+  - company: Epitech
+    role: Master's in computer science
+    location: Nantes
+    period: October 2021 - August 2025
+    description: >-
+      Epitech has no lectures. You get a project and a deadline, and working out how to build
+      it is the exercise. That is brutal for about a year, then it becomes the most useful
+      habit the school hands you: you stop waiting to be taught and go and find out. It starts
+      low, with C and C++, where nothing is done for you and you learn what the machine is
+      actually doing. Everything after that sits on top of it. Dozens of languages followed,
+      alongside a heavy emphasis on time spent inside real companies and a year abroad that
+      leaves you fluent in English. The final year project is closer to running a product than
+      to coursework: a real team, real users, and in my case people spread across time zones.
+      The whole degree is scored like a game, which sounds gimmicky until you catch yourself
+      still working at midnight because your team is.
+    technologies:
+      - { name: C / C++, color: blue }
+      - { name: Python, color: yellow }
+      - { name: React, color: cyan }
+
+  - company: Dankook University
+    role: Exchange year
+    location: Seoul, South Korea
+    period: August 2023 - August 2024
+    description: >-
+      A year on exchange in Seoul. My English came out of it far stronger than it went in and
+      I picked up enough Korean to get by, but the part that stayed with me was being taught
+      differently: another pedagogy, other expectations, other assumptions about what a
+      developer should already know. Korea is as current as anywhere on technology and looks
+      at it from a completely different angle. I studied Dart, Flutter and Java while I
+      was there.
+    technologies:
+      - { name: Dart, color: cyan }
+      - { name: Flutter, color: blue }
+      - { name: Java, color: red }

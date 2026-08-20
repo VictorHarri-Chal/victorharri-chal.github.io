@@ -1,12 +1,12 @@
 class ProjectsController < ApplicationController
   def index
-    # Plus besoin de charger les projets depuis le YAML
-    # Tout est maintenant en dur dans le template
+    @featured = Project.featured
+    @minor = Project.minor
   end
 
   def show
-    # La page show utilise maintenant des partials en dur
-    # Pas besoin de charger des données depuis le modèle
-    render :show
+    @project = Project.find(params[:id])
+
+    render :not_found, status: :not_found if @project.nil?
   end
 end

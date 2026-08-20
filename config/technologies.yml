@@ -1,0 +1,40 @@
+# Technologies shown on the about page, in two levels.
+#
+# `icon` names an entry in config/icons.yml. `color` holds the full Tailwind
+# text color, spelled out so Tailwind's scanner can see it.
+
+groups:
+  - name: Day to day
+    icon: gem
+    technologies:
+      - { name: Ruby, icon: gem, color: text-red-500 }
+      - { name: Rails, icon: gem, color: text-red-600 }
+      - { name: Hotwire, icon: bolt, color: text-red-400 }
+      - { name: ViewComponent, icon: cubes, color: text-purple-400 }
+      - { name: PostgreSQL, icon: database, color: text-blue-500 }
+      - { name: Sidekiq, icon: list-check, color: text-orange-400 }
+      - { name: Redis, icon: server, color: text-red-500 }
+      - { name: Elasticsearch, icon: magnifying-glass, color: text-yellow-400 }
+      - { name: RSpec, icon: vial-circle-check, color: text-green-400 }
+      - { name: Tailwind, icon: css3-alt, color: text-cyan-400 }
+      - { name: Kamal, icon: cloud-arrow-up, color: text-blue-400 }
+      - { name: Docker, icon: docker, color: text-blue-500 }
+      - { name: Git, icon: git-alt, color: text-orange-500 }
+
+  - name: Also worked with
+    icon: layer-group
+    technologies:
+      - { name: TypeScript, icon: js-square, color: text-blue-600 }
+      - { name: JavaScript, icon: js-square, color: text-yellow-400 }
+      - { name: React, icon: react, color: text-cyan-400 }
+      - { name: React Native, icon: react, color: text-cyan-500 }
+      - { name: Angular, icon: angular, color: text-red-600 }
+      - { name: Flutter, icon: mobile-alt, color: text-blue-400 }
+      - { name: Java, icon: java, color: text-red-500 }
+      - { name: Spring, icon: leaf, color: text-green-600 }
+      - { name: Python, icon: python, color: text-blue-500 }
+      - { name: C, icon: code, color: text-blue-600 }
+      - { name: C++, icon: code, color: text-blue-700 }
+      - { name: Node, icon: node-js, color: text-green-500 }
+      - { name: MongoDB, icon: leaf, color: text-green-600 }
+      - { name: MySQL, icon: server, color: text-orange-600 }
