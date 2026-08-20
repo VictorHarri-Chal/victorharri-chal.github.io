@@ -24,7 +24,8 @@ ROOT = File.expand_path("..", __dir__)
 OUTPUT = File.join(ROOT, "_site")
 HOST = ENV.fetch("STATIC_HOST", "http://127.0.0.1:3000")
 EXCEPTION_MARKER = "Action Controller: Exception"
-COPIED_FILES = %w[404.html icon.svg icon.png robots.txt sitemap.xml CV_Victor_Harri-Chal.pdf].freeze
+SITE_URL = "https://victorharri-chal.github.io"
+COPIED_FILES = %w[404.html icon.svg icon.png og-image.png robots.txt CV_Victor_Harri-Chal.pdf].freeze
 
 def project_slugs
   YAML.load_file(File.join(ROOT, "config", "projects.yml"))
@@ -70,6 +71,16 @@ def write(path, body)
   end
 end
 
+def write_sitemap(paths)
+  urls = paths.map { |path| "  <url><loc>#{SITE_URL}#{path}</loc></url>" }
+  File.write(File.join(OUTPUT, "sitemap.xml"), <<~XML)
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    #{urls.join("\n")}
+    </urlset>
+  XML
+end
+
 def copy_static_files
   assets = File.join(ROOT, "public", "assets")
   FileUtils.cp_r(assets, OUTPUT) if Dir.exist?(assets)
@@ -95,6 +106,7 @@ pages.each do |path|
 end
 
 copy_static_files
+write_sitemap(pages)
 
 written = Dir.glob(File.join(OUTPUT, "**", "*.html")).size
 puts "\n✓ #{pages.size} pages rendered, #{written} HTML files written to _site/"

@@ -18,6 +18,9 @@ featured:
     datetime: "2025-07-01"
     accent: purple
     size: large
+    meta_description: >-
+      A nutrition and training tracker built and run solo on Rails 8. Calories, macros,
+      recipes, reusable training programs, weight and body measurements in one app.
     teaser: >-
       I have been lifting for four years, and I got tired of juggling apps that each did one
       part well and made the rest painful. NutriFlow is the one I wanted to exist. Calories
@@ -65,6 +68,9 @@ featured:
     datetime: "2026-03-01"
     accent: amber
     size: small
+    meta_description: >-
+      A Rails dashboard for municipal waste collection. Containers mapped by fill level,
+      rounds routed on real roads through OSRM, incident handling and fleet statistics.
     teaser: >-
       Waste collection teams need to know which containers are full before they send a truck
       out. Vigie maps every collection point, colors it by fill level, and builds an
@@ -107,6 +113,9 @@ featured:
     datetime: "2025-04-01"
     accent: cyan
     size: small
+    meta_description: >-
+      An Airbnb-style rental platform on Rails and Hotwire, with a Mapbox map that filters as
+      you move and a chatbot built on the OpenAI API.
     teaser: >-
       A rental platform built around the map. Listings filter as you pan, booking happens on
       the listing page, and a chatbot suggests places from what you tell it you want.
@@ -144,6 +153,9 @@ featured:
     datetime: "2025-06-01"
     accent: emerald
     size: small
+    meta_description: >-
+      My Epitech final year project. A React and Java platform mapping every streetlight in
+      Nantes so councils can cut lighting costs without creating dark corners.
     teaser: >-
       My final year project. Local authorities can see every streetlight in Nantes on a map,
       filter the network by what it costs to run, and test a change before committing to it.

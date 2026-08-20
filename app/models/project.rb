@@ -4,10 +4,10 @@ class Project
   include Catalog
 
   attr_reader :slug, :name, :period, :datetime, :accent, :size,
-              :teaser, :summary, :link, :technologies, :features
+              :teaser, :summary, :meta_description, :link, :technologies, :features
 
   def initialize(slug:, name:, period:, datetime:, accent:, size:, teaser:, summary:,
-                 link:, technologies:, features:)
+                 meta_description:, link:, technologies:, features:)
     @slug = slug
     @name = name
     @period = period
@@ -16,6 +16,7 @@ class Project
     @size = size
     @teaser = teaser
     @summary = summary
+    @meta_description = meta_description
     @link = link
     @technologies = technologies
     @features = features
