@@ -6,34 +6,29 @@ export default class extends Controller {
   connect() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
-    this.bindMouseMove()
+    this.onMouseMove = this.onMouseMove.bind(this)
+    document.addEventListener("mousemove", this.onMouseMove, { passive: true })
   }
 
   disconnect() {
-    this.unbindMouseMove()
+    document.removeEventListener("mousemove", this.onMouseMove)
+    if (this.frame) cancelAnimationFrame(this.frame)
   }
 
-  bindMouseMove() {
-    this.handleMouseMove = this.handleMouseMove.bind(this)
-    document.addEventListener('mousemove', this.handleMouseMove)
+  // Pointer events fire far more often than the screen refreshes, so the write
+  // is coalesced down to one per frame.
+  onMouseMove(event) {
+    this.pointer = { x: event.clientX, y: event.clientY }
+    this.frame ||= requestAnimationFrame(() => {
+      this.frame = null
+      this.move()
+    })
   }
 
-  unbindMouseMove() {
-    document.removeEventListener('mousemove', this.handleMouseMove)
-  }
+  move() {
+    const x = (this.pointer.x / window.innerWidth - 0.5) * 2
+    const y = (this.pointer.y / window.innerHeight - 0.5) * 2
 
-  handleMouseMove(event) {
-    const { clientX, clientY } = event
-    const { innerWidth, innerHeight } = window
-
-    // Calculer la position relative de la souris (0 à 1)
-    const x = (clientX / innerWidth - 0.5) * 2 // -1 à 1
-    const y = (clientY / innerHeight - 0.5) * 2 // -1 à 1
-
-    // Appliquer un déplacement plus lent au fond étoilé
-    const moveX = x * 8 // Déplacement max de 8px (plus lent)
-    const moveY = y * 8 // Déplacement max de 8px (plus lent)
-
-    this.starfieldTarget.style.transform = `translate(${moveX}px, ${moveY}px)`
+    this.starfieldTarget.style.transform = `translate(${x * 8}px, ${y * 8}px)`
   }
 }

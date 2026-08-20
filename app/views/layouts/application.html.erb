@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <%# Lets the CSS hide the reveal blocks up front when JS is available, so the
+        content is not painted, hidden and faded back in. Without JS the class is
+        never added and everything stays visible. %>
+    <script>document.documentElement.classList.add("js")</script>
     <title><%= page_title %></title>
     <meta name="description" content="<%= page_description %>">
     <link rel="canonical" href="<%= canonical_url %>">

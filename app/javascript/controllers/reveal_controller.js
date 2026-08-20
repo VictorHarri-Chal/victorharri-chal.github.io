@@ -1,15 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 
-// data-controller="reveal" data-reveal-class="opacity-100 translate-y-0"
+// The hidden state is set in CSS, gated on the `js` class, so nothing flashes
+// before this runs. All the controller does is flip the element once it scrolls
+// into view.
 export default class extends Controller {
-  static values = { threshold: { type: Number, default: 0.1 }, class: String }
+  static values = { threshold: { type: Number, default: 0.1 } }
 
   connect() {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.element.classList.add("is-revealed")
+      return
+    }
 
-    this.element.classList.add("opacity-0", "translate-y-8", "transition-all", "duration-1000", "ease-out")
     this.observer = new IntersectionObserver(this.onIntersect.bind(this), {
-      root: null,
       threshold: this.thresholdValue,
       rootMargin: "0px 0px -50px 0px"
     })
@@ -17,17 +20,13 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.observer && this.observer.disconnect()
+    this.observer?.disconnect()
   }
 
   onIntersect(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        this.element.classList.remove("opacity-0", "translate-y-8")
-        const extra = this.hasClassValue ? this.classValue.split(" ") : []
-        this.element.classList.add("opacity-100", "translate-y-0", ...extra)
-        this.observer.disconnect()
-      }
-    })
+    if (!entries.some((entry) => entry.isIntersecting)) return
+
+    this.element.classList.add("is-revealed")
+    this.observer.disconnect()
   }
 }
